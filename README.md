@@ -8,7 +8,7 @@ Een kant-en-klaar configuratiepakket voor Claude dat bevat:
 
 - **Persoonlijke context** -- templates om Claude te vertellen wie je bent, hoe je werkt, en wat je verwacht
 - **18 gespecialiseerde agents** -- van code review tot marketing, van security tot E2E testing
-- **8 slash commands** -- workflows voor plannen, reviewen, committen, debuggen en meer
+- **10 slash commands** -- workflows voor plannen, reviewen, committen, debuggen, design en meer
 - **Veilige defaults** -- permissions, hooks en safety rules die destructieve acties blokkeren
 - **Beginner guide** -- stap-voor-stap uitleg om alles in te richten
 
@@ -73,7 +73,7 @@ claude-starter-pack/
 |   |-- CLAUDE.md               # Globale instructies
 |   |-- settings.json           # Permissions, hooks, safety
 |   |-- agents/                 # 18 gespecialiseerde agents
-|   |-- commands/               # 8 slash commands
+|   |-- commands/               # 10 slash commands
 |   +-- skills/                 # Playwright CLI skill (token-efficient browser testing)
 |
 +-- cowork/                      # Cowork-specifiek
@@ -126,6 +126,8 @@ claude-starter-pack/
 | `/debug`        | Systematisch debuggen                                    |
 | `/refactor`     | Code analyseren en opschonen                             |
 | `/ship`         | Pre-ship checklist (lint, tests, build)                  |
+| `/design`       | UI/UX design analyseren en verbeteren                    |
+| `/research`     | Research uitvoeren over een onderwerp                    |
 | `/init-project` | Project CLAUDE.md aanmaken                               |
 
 ## Settings & Safety
