@@ -1,0 +1,84 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(npx *)",
+      "Bash(pnpm *)",
+      "Bash(yarn *)",
+      "Bash(node *)",
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(cat *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(curl *)",
+      "Bash(which *)",
+      "Bash(echo *)",
+      "Bash(touch *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(diff *)",
+      "Bash(sort *)",
+      "Bash(python3 *)",
+      "Bash(pip *)",
+      "Bash(tsc *)",
+      "Bash(jq *)",
+      "Bash(open *)",
+      "Read",
+      "Edit",
+      "Write",
+      "WebFetch(*)",
+      "WebSearch"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf /*)",
+      "Bash(git push * --force)",
+      "Bash(git push --force *)",
+      "Bash(git reset --hard HEAD~*)",
+      "Bash(DROP TABLE *)",
+      "Bash(drop table *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // .tool_input.filePath // empty' 2>/dev/null); if [ -n \"$FILE\" ] && echo \"$FILE\" | grep -qE '\\.(tsx?|jsx?|json|css|scss|md)$'; then npx prettier --write \"$FILE\" 2>/dev/null || true; fi"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CMD=$(jq -r '.tool_input.command' 2>/dev/null); if echo \"$CMD\" | grep -qiE '(rm -rf[[:space:]]*/[^a-zA-Z]|drop[[:space:]]+table|truncate[[:space:]]+table|git[[:space:]]+push.*--force)'; then echo 'BLOCKED: destructief commando gedetecteerd' >&2; exit 2; fi; exit 0"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude heeft je aandacht nodig\" with title \"Claude Code\"' 2>/dev/null || notify-send 'Claude Code' 'Claude heeft je aandacht nodig' 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}
