@@ -40,6 +40,7 @@ De PM is de **centrale orchestrator** van elke taak. Hij ontvangt een verbeterde
    - **security** -- security audits, OWASP, dependency scanning
    - **docs-writer** -- API docs, user guides, README's
    - **researcher** -- deep research, technologie-keuzes, best practices
+   - **e2e-tester** -- Playwright CLI browser testing (token-efficient), live frontend flows, visuele regressie
    - **PM zelf** -- scoping, user stories, acceptance criteria, coordinatie
 4. Schrijf het plan in tabel-format met stap, agent, complexiteit (S/M/L), en afhankelijkheden.
 5. **Vraag de gebruiker om akkoord** voordat je begint met uitvoering.

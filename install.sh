@@ -32,6 +32,7 @@ fi
 # Maak directories aan
 mkdir -p "$CLAUDE_DIR/commands"
 mkdir -p "$CLAUDE_DIR/agents"
+mkdir -p "$CLAUDE_DIR/skills"
 
 # Backup bestaande bestanden
 backup_if_exists() {
@@ -91,6 +92,39 @@ for agent in "$SOURCE_DIR/agents/"*.md; do
     fi
 done
 echo "  $agent_count agents geinstalleerd"
+
+# Installeer skills
+echo ""
+echo "Stap 5: Skills installeren..."
+skill_count=0
+if [ -d "$SOURCE_DIR/skills" ]; then
+    for skill_dir in "$SOURCE_DIR/skills/"*/; do
+        if [ -d "$skill_dir" ]; then
+            skill_name=$(basename "$skill_dir")
+            cp -r "$skill_dir" "$CLAUDE_DIR/skills/"
+            skill_count=$((skill_count + 1))
+        fi
+    done
+fi
+echo "  $skill_count skills geinstalleerd"
+
+# Installeer Playwright CLI (optioneel)
+echo ""
+if ! command -v playwright-cli &> /dev/null; then
+    read -p "Playwright CLI installeren voor E2E testing? (j/n) " -n 1 -r
+    echo ""
+    if [[ $REPLY =~ ^[jJyY]$ ]]; then
+        echo "  npm install -g @playwright/cli..."
+        npm install -g @playwright/cli 2>/dev/null
+        echo "  Chromium installeren..."
+        npx playwright install chromium 2>/dev/null
+        echo "  Playwright CLI geinstalleerd"
+    else
+        echo "  Playwright CLI overgeslagen (installeer later met: npm install -g @playwright/cli)"
+    fi
+else
+    echo "Playwright CLI is al geinstalleerd."
+fi
 
 # Samenvatting
 echo ""

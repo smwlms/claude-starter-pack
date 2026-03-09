@@ -7,7 +7,7 @@
 Een kant-en-klaar configuratiepakket voor Claude dat bevat:
 
 - **Persoonlijke context** -- templates om Claude te vertellen wie je bent, hoe je werkt, en wat je verwacht
-- **17 gespecialiseerde agents** -- van code review tot marketing, van security tot product coaching
+- **18 gespecialiseerde agents** -- van code review tot marketing, van security tot E2E testing
 - **8 slash commands** -- workflows voor plannen, reviewen, committen, debuggen en meer
 - **Veilige defaults** -- permissions, hooks en safety rules die destructieve acties blokkeren
 - **Beginner guide** -- stap-voor-stap uitleg om alles in te richten
@@ -72,8 +72,9 @@ claude-starter-pack/
 |-- claude-code/                 # Claude Code CLI bestanden
 |   |-- CLAUDE.md               # Globale instructies
 |   |-- settings.json           # Permissions, hooks, safety
-|   |-- agents/                 # 17 gespecialiseerde agents
-|   +-- commands/               # 8 slash commands
+|   |-- agents/                 # 18 gespecialiseerde agents
+|   |-- commands/               # 8 slash commands
+|   +-- skills/                 # Playwright CLI skill (token-efficient browser testing)
 |
 +-- cowork/                      # Cowork-specifiek
     +-- setup-guide.md           # Setup instructies
@@ -90,17 +91,18 @@ claude-starter-pack/
 
 ### Development agents
 
-| Agent           | Doel                                                 |
-| --------------- | ---------------------------------------------------- |
-| `senior-dev`    | Codebase analyse, architectuur, product/UX inzichten |
-| `reviewer`      | Code review: security, readability, consistency      |
-| `qa`            | Testplannen, regressies, smoke tests, edge cases     |
-| `tester`        | Tests schrijven en draaien (unit, integration, e2e)  |
-| `data-engineer` | Database schema's, migraties, queries, performance   |
-| `devops`        | CI/CD, Docker, deployment, monitoring, infra         |
-| `security`      | Security audits, OWASP, dependency scanning          |
-| `docs-writer`   | API docs, README's, user guides, changelogs          |
-| `researcher`    | Deep research, technologie-keuzes, best practices    |
+| Agent           | Doel                                                          |
+| --------------- | ------------------------------------------------------------- |
+| `senior-dev`    | Codebase analyse, architectuur, product/UX inzichten          |
+| `reviewer`      | Code review: security, readability, consistency               |
+| `qa`            | Testplannen, regressies, smoke tests, edge cases              |
+| `tester`        | Tests schrijven en draaien (unit, integration, e2e)           |
+| `data-engineer` | Database schema's, migraties, queries, performance            |
+| `devops`        | CI/CD, Docker, deployment, monitoring, infra                  |
+| `security`      | Security audits, OWASP, dependency scanning                   |
+| `docs-writer`   | API docs, README's, user guides, changelogs                   |
+| `researcher`    | Deep research, technologie-keuzes, best practices             |
+| `e2e-tester`    | Playwright CLI browser testing, live flows, visuele regressie |
 
 ### Business agents
 
