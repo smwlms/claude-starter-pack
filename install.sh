@@ -101,7 +101,8 @@ if [ -d "$SOURCE_DIR/skills" ]; then
     for skill_dir in "$SOURCE_DIR/skills/"*/; do
         if [ -d "$skill_dir" ]; then
             skill_name=$(basename "$skill_dir")
-            cp -r "$skill_dir" "$CLAUDE_DIR/skills/"
+            mkdir -p "$CLAUDE_DIR/skills/$skill_name"
+            cp -r "$skill_dir"* "$CLAUDE_DIR/skills/$skill_name/" 2>/dev/null
             skill_count=$((skill_count + 1))
         fi
     done

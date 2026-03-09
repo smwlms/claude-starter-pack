@@ -8,6 +8,7 @@ Een kant-en-klaar configuratiepakket voor Claude dat bevat:
 
 - **Persoonlijke context** -- templates om Claude te vertellen wie je bent, hoe je werkt, en wat je verwacht
 - **18 gespecialiseerde agents** -- van code review tot marketing, van security tot E2E testing
+- **19 auto-trigger skills** -- dezelfde expertise als skills die automatisch activeren op basis van context
 - **10 slash commands** -- workflows voor plannen, reviewen, committen, debuggen, design en meer
 - **Veilige defaults** -- permissions, hooks en safety rules die destructieve acties blokkeren
 - **Beginner guide** -- stap-voor-stap uitleg om alles in te richten
@@ -74,7 +75,7 @@ claude-starter-pack/
 |   |-- settings.json           # Permissions, hooks, safety
 |   |-- agents/                 # 18 gespecialiseerde agents
 |   |-- commands/               # 10 slash commands
-|   +-- skills/                 # Playwright CLI skill (token-efficient browser testing)
+|   +-- skills/                 # 19 auto-trigger skills
 |
 +-- cowork/                      # Cowork-specifiek
     +-- setup-guide.md           # Setup instructies
@@ -114,6 +115,34 @@ claude-starter-pack/
 | `sales-coach`       | Verkoopstrategie, scripts, objection handling      |
 | `legal`             | Juridische vragen, compliance, GDPR                |
 | `design-researcher` | UX/UI onderzoek, visueel design, patterns          |
+
+## Skills (auto-trigger)
+
+Skills worden automatisch geactiveerd wanneer Claude detecteert dat je vraag bij een skill past. Ze werken in zowel **Claude Code CLI** als **Cowork**.
+
+| Skill               | Triggert bij                                          |
+| ------------------- | ----------------------------------------------------- |
+| `pm`                | plan maken, project plannen, werk verdelen            |
+| `prompt-analyst`    | prompt analyseren, opdracht verbeteren, scope bepalen |
+| `senior-dev`        | code analyseren, architectuur review, tech debt       |
+| `reviewer`          | code review, PR review, security check                |
+| `qa`                | testplan, edge cases, regressie, smoke test           |
+| `tester`            | test schrijven, unit test, integration test           |
+| `data-engineer`     | database, schema, migratie, query, SQL                |
+| `product-coach`     | product visie, product brief, MVP scope               |
+| `design-researcher` | UX research, UI analyse, accessibility                |
+| `copywriter`        | tekst schrijven, copy, email, social media            |
+| `marketing`         | marketing strategie, SEO, GEO, campagnes              |
+| `sales-coach`       | verkoop, objection handling, pitch, closing           |
+| `legal`             | juridisch, GDPR, contract, compliance                 |
+| `cfo`               | financieel, budget, ROI, belasting, factuur           |
+| `devops`            | CI/CD, Docker, deployment, monitoring                 |
+| `security`          | security audit, OWASP, vulnerability, CVE             |
+| `docs-writer`       | documentatie, README, API docs, changelog             |
+| `researcher`        | research, vergelijking, best practices                |
+| `e2e-tester`        | browser test, playwright, frontend test               |
+
+> **Agents vs Skills**: Agents worden gedelegeerd door de PM. Skills activeren automatisch op basis van je vraag. Dezelfde expertise, twee manieren om ze te gebruiken.
 
 ## Slash Commands
 
