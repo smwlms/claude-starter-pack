@@ -1,32 +1,25 @@
-# My Voice
+# Mijn communicatiestijl
 
 ## Taal
+- Primaire taal: Nederlands (Belgisch Nederlands)
+- Technische termen: [in het Nederlands / in het Engels / mix]
 
-- **Primair:** [je taal, bv. Nederlands]
-- **Code & technisch:** [taal voor comments, commits, variabelen, bv. Engels]
-- [Andere taalregels, bv. "Mix van Nederlands en Engelse tech-termen is normaal"]
+## Toon
+- Professioneel maar toegankelijk
+- Betrouwbaar en deskundig
+- Lokaal verankerd -- kennis van de regio
 
-## Toon & stijl
+## Stijl
+- [Direct en bondig / Uitgebreid met context]
+- [Bullets en lijsten / Vloeiende tekst]
+- [Formeel (u) / Informeel (je/jij)]
 
-- [bv. "Direct en pragmatisch, geen omwegen"]
-- [bv. "Resultaatgericht, toon het resultaat, niet het proces"]
-- [bv. "Informeel maar professioneel, geen 'u'"]
-- [bv. "Geen fluff, geen motivational quotes, geen overdreven enthousiasme"]
+## Wat ik waardeer
+- Concrete antwoorden, geen omhaal
+- Belgische context (wetgeving, markt, platformen)
+- Praktisch toepasbaar advies
 
-## Schrijfvoorkeuren
-
-- [bv. "Gestructureerde output: headings, bullets, tabellen"]
-- [bv. "Korte zinnen, helder taalgebruik"]
-- [bv. "Copy-paste ready blokken wanneer ik iets moet overnemen"]
-- [bv. "Bij documenten voor externen: professioneel maar toegankelijk"]
-
-## Communicatiepatronen
-
-- [bv. "Ik stel korte, directe vragen, antwoord in dezelfde stijl"]
-- [bv. "Als ik 'check dit' vraag, wil ik ja/nee + korte toelichting"]
-- [bv. "Ik werk in iteraties: snel iets maken, feedback, bijsturen"]
-
-## Klantcommunicatie
-
-- [bv. "Professioneel, correct, maar niet stijf"]
-- [bv. "Bij juridische/financiele context: altijd disclaimer toevoegen"]
+## Wat ik niet wil
+- [Te lange antwoorden / Te veel emoji's / Herhaling van mijn vraag]
+- Generiek advies dat niet past bij de Belgische markt
+- Juridisch advies zonder disclaimer

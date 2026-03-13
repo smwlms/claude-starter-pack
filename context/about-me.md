@@ -1,40 +1,29 @@
-# About Me
+# Over mij
 
-## Persoonlijk
+## Profiel
+- Naam: [NAAM]
+- Kantoor: [BEDRIJFSNAAM]
+- BIV-nummer: [BIV-NUMMER]
+- Regio: [REGIO]
+- Type: [verkoop / verhuur / beheer / syndicschap / combinatie]
 
-- **Naam:** [je naam] (noem me [voorkeursnaam])
-- **Locatie:** [stad/regio, land]
+## Sector
+- Belgische vastgoedmakelaardij
+- Doelgroep: [kopers / verkopers / huurders / verhuurders / investeerders]
+- Panden: [residentieel / commercieel / nieuwbouw / luxe / combinatie]
 
-## Professioneel profiel
+## Regelgeving
+- BIV-plichtenleer en deontologie
+- GDPR: persoonsgegevens kopers/verkopers/huurders
+- Anti-witwas: identificatieplicht en waakzaamheidsplicht
+- Informatieplichten: EPC, bodemattest, stedenbouw
 
-[Korte beschrijving: wat doe je, in welke sector, wat is je hoofdactiviteit?]
+## Tools & platformen
+- Portalen: [Immoweb / Zimmo / andere]
+- CRM: [naam CRM of "geen"]
+- Website: [URL]
+- Social media: [Facebook / Instagram / LinkedIn / andere]
+- Facturatie: [Billit / andere]
 
-### Bedrijven & rollen
-
-- **[Bedrijf 1]**: [korte beschrijving van je rol]
-- **[Bedrijf 2]**: [korte beschrijving van je rol]
-
-### Eerdere ervaring
-
-- **[Vorig bedrijf]**: [rol en periode]
-
-## Sector & expertise
-
-- [Domein 1]
-- [Domein 2]
-- [Domein 3]
-
-## Technische achtergrond
-
-[Beschrijf je technisch niveau: full-stack developer, no-code gebruiker, data-analist, etc.]
-
-- **Frontend:** [frameworks/tools]
-- **Backend:** [frameworks/tools]
-- **Databases:** [welke databases gebruik je]
-- **API's:** [externe integraties]
-- **Infra:** [hosting, CI/CD, cloud]
-- **AI tooling:** [welke AI tools gebruik je]
-
-## Brand identiteit
-
-[Heb je meerdere merken/bedrijven? Vermeld hier of er aparte brand guidelines zijn per bedrijf.]
+## Team
+- [Beschrijf je team: solo makelaar, klein kantoor, meerdere medewerkers]

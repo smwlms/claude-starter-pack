@@ -1,42 +1,29 @@
-# About Me - Voorbeeld
+# Over mij
 
-> Dit is een ingevuld voorbeeld. Kopieer `context/about-me.md` en vul het in met jouw gegevens.
+## Profiel
+- Naam: Marie Peeters
+- Kantoor: Peeters Vastgoed
+- BIV-nummer: 123.456
+- Regio: Oost-Vlaanderen (focus Gent en rand)
+- Type: verkoop en verhuur
 
-## Persoonlijk
+## Sector
+- Belgische vastgoedmakelaardij
+- Doelgroep: verkopers en kopers, voornamelijk residentieel
+- Panden: appartementen, rijwoningen, villa's
 
-- **Naam:** Jan De Vries (noem me Jan)
-- **Locatie:** Antwerpen, Belgie
+## Regelgeving
+- BIV-plichtenleer en deontologie
+- GDPR: verwerkingsregister bijgehouden, privacy policy op website
+- Anti-witwas: identificatieprocedure bij elk mandaat
+- Informatieplichten: EPC, bodemattest, stedenbouwkundig uittreksel
 
-## Professioneel profiel
+## Tools & platformen
+- Portalen: Immoweb, Zimmo
+- CRM: Whise
+- Website: www.peetersvastgoed.be
+- Social media: Facebook, Instagram, LinkedIn
+- Facturatie: Billit
 
-Ondernemer en consultant met een sterke technische achtergrond. Bouwt actief software-oplossingen voor zijn sector.
-
-### Bedrijven & rollen
-
-- **De Vries Consulting**: strategie en digitale transformatie
-- **TechFlow BV**: SaaS-platform voor projectmanagement
-
-### Eerdere ervaring
-
-- **Deloitte Digital**: senior consultant (2019-2023)
-
-## Sector & expertise
-
-- Digitale transformatie
-- SaaS / productmanagement
-- Data-analyse en business intelligence
-
-## Technische achtergrond
-
-Full-stack developer die zelf tools bouwt:
-
-- **Frontend:** Next.js, React, Tailwind CSS
-- **Backend:** Node.js, TypeScript, Python
-- **Databases:** PostgreSQL, Supabase, Redis
-- **API's:** Stripe, SendGrid, Google APIs
-- **Infra:** GitHub, Vercel, Docker
-- **AI tooling:** Claude Code CLI, Claude Cowork
-
-## Brand identiteit
-
-Twee merken: De Vries Consulting (zakelijk, B2B) en TechFlow (modern, B2B SaaS). Aparte tone of voice per merk.
+## Team
+- Klein kantoor: 2 makelaars, 1 administratief medewerker

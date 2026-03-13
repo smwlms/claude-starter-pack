@@ -31,12 +31,13 @@ De PM is de **centrale orchestrator** van elke taak. Hij ontvangt een verbeterde
    - **tester** -- unit/integration/e2e tests schrijven en draaien
    - **senior-dev** -- diepgaande codebase analyse, architectuur review, product/UX inzichten
    - **product-coach** -- productvisie verhelderen, product brief opstellen
-   - **copywriter** -- teksten, emails, content
+   - **copywriter** -- website copy, emails, property beschrijvingen
    - **design-researcher** -- UX/UI onderzoek, visueel design
-   - **legal** -- juridische vragen, compliance, regelgeving
-   - **sales-coach** -- verkoopstrategie, scripts, objection handling
-   - **marketing** -- campagnes, SEO, GEO, social media, email marketing
-   - **cfo** -- financiele analyse, budgettering, fiscaal advies
+   - **legal-makelaar** -- Belgisch vastgoedrecht, BIV, GDPR, anti-witwas
+   - **sales-coach** -- verkoopscripts, objection handling, lead nurturing
+   - **marketing-specialist** -- campagnes, SEO, GEO, social media, email marketing
+   - **cfo** -- financiele analyse, Belgische fiscaliteit, vennootschapsstructuur
+   - **geschillen-communicatie** -- dossierbeheer geschillen, brieven verzekeraars/advocaten
    - **devops** -- CI/CD, Docker, deployment, monitoring
    - **security** -- security audits, OWASP, dependency scanning
    - **docs-writer** -- API docs, user guides, README's
