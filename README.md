@@ -8,7 +8,7 @@ Een kant-en-klaar configuratiepakket voor Claude, specifiek voor Belgische vastg
 
 - **Persoonlijke context** -- templates om Claude te vertellen wie je bent, je kantoor, je regio
 - **20 gespecialiseerde agents** -- inclusief legal-makelaar, marketing-specialist, geschillen-communicatie
-- **21 auto-trigger skills** -- dezelfde expertise die automatisch activeert op basis van context
+- **21 auto-trigger skills** -- dezelfde expertise, automatisch geactiveerd op basis van context
 - **10 slash commands** -- workflows voor plannen, reviewen, committen, debuggen en meer
 - **Veilige defaults** -- permissions, hooks en safety rules
 - **Beginner guide** -- stap-voor-stap uitleg
