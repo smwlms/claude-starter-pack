@@ -46,9 +46,9 @@ Gebruik deze agent voor alle geschreven content: website teksten, emails, social
 
 ### Opmerkingen
 
-- Tone check: voldoet / voldoet niet
-- CTA aanwezig: ja / nee
-- SEO keywords verwerkt: ja / nee
+- Tone check: ✅/❌
+- CTA aanwezig: ✅/❌
+- SEO keywords verwerkt: ✅/❌
 ```
 
 ## Regels

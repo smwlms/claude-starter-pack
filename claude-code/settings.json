@@ -13,6 +13,7 @@
       "Bash(mkdir *)",
       "Bash(cp *)",
       "Bash(mv *)",
+      "Bash(rm *)",
       "Bash(find *)",
       "Bash(grep *)",
       "Bash(rg *)",
@@ -25,10 +26,22 @@
       "Bash(wc *)",
       "Bash(diff *)",
       "Bash(sort *)",
+      "Bash(pkill *)",
+      "Bash(kill *)",
+      "Bash(sleep *)",
+      "Bash(tsc *)",
       "Bash(python3 *)",
       "Bash(pip *)",
-      "Bash(tsc *)",
+      "Bash(brew *)",
       "Bash(jq *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "Bash(xargs *)",
+      "Bash(tee *)",
+      "Bash(export *)",
+      "Bash(source *)",
+      "Bash(chmod *)",
+      "Bash(chown *)",
       "Bash(open *)",
       "Read",
       "Edit",
@@ -46,6 +59,7 @@
       "Bash(drop table *)"
     ]
   },
+  "model": "sonnet",
   "hooks": {
     "PostToolUse": [
       {
@@ -80,5 +94,6 @@
         ]
       }
     ]
-  }
+  },
+  "effortLevel": "high"
 }

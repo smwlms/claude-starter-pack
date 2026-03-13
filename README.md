@@ -56,6 +56,8 @@ claude-starter-pack/
 |-- README.md                    # Dit bestand
 |-- install.sh                   # Automatische installer (CLI)
 |-- setup-prompt.md              # Plak in Cowork, Claude doet de rest
+|-- VERSION                      # Versienummer
+|-- CHANGELOG.md                 # Wijzigingslog
 |
 |-- guide/
 |   +-- beginner-guide.md       # Stap-voor-stap setup guide
@@ -109,38 +111,39 @@ claude-starter-pack/
 
 | Agent               | Doel                                               |
 | ------------------- | -------------------------------------------------- |
-| `product-coach`     | Product visie verhelderen via gerichte vragen      |
-| `copywriter`        | Teksten voor website, email, social media          |
-| `marketing`         | Strategie, SEO, GEO, social media, email marketing |
-| `sales-coach`       | Verkoopstrategie, scripts, objection handling      |
-| `legal`             | Juridische vragen, compliance, GDPR                |
-| `design-researcher` | UX/UI onderzoek, visueel design, patterns          |
+| `product-coach`     | Product visie verhelderen via gerichte vragen       |
+| `copywriter`        | Teksten voor website, email, social media           |
+| `marketing`         | Strategie, SEO, GEO, social media, email marketing  |
+| `sales-coach`       | Verkoopstrategie, scripts, objection handling       |
+| `legal`             | Juridische vragen, compliance, GDPR                 |
+| `cfo`               | Financiele analyse, budgettering, fiscaal advies    |
+| `design-researcher` | UX/UI onderzoek, visueel design, patterns           |
 
 ## Skills (auto-trigger)
 
 Skills worden automatisch geactiveerd wanneer Claude detecteert dat je vraag bij een skill past. Ze werken in zowel **Claude Code CLI** als **Cowork**.
 
 | Skill               | Triggert bij                                          |
-| ------------------- | ----------------------------------------------------- |
-| `pm`                | plan maken, project plannen, werk verdelen            |
-| `prompt-analyst`    | prompt analyseren, opdracht verbeteren, scope bepalen |
-| `senior-dev`        | code analyseren, architectuur review, tech debt       |
-| `reviewer`          | code review, PR review, security check                |
-| `qa`                | testplan, edge cases, regressie, smoke test           |
-| `tester`            | test schrijven, unit test, integration test           |
-| `data-engineer`     | database, schema, migratie, query, SQL                |
-| `product-coach`     | product visie, product brief, MVP scope               |
-| `design-researcher` | UX research, UI analyse, accessibility                |
-| `copywriter`        | tekst schrijven, copy, email, social media            |
-| `marketing`         | marketing strategie, SEO, GEO, campagnes              |
-| `sales-coach`       | verkoop, objection handling, pitch, closing           |
-| `legal`             | juridisch, GDPR, contract, compliance                 |
-| `cfo`               | financieel, budget, ROI, belasting, factuur           |
-| `devops`            | CI/CD, Docker, deployment, monitoring                 |
-| `security`          | security audit, OWASP, vulnerability, CVE             |
-| `docs-writer`       | documentatie, README, API docs, changelog             |
-| `researcher`        | research, vergelijking, best practices                |
-| `e2e-tester`        | browser test, playwright, frontend test               |
+| -------------------- | ----------------------------------------------------- |
+| `pm`                | plan maken, project plannen, werk verdelen             |
+| `prompt-analyst`    | prompt analyseren, opdracht verbeteren, scope bepalen  |
+| `senior-dev`        | code analyseren, architectuur review, tech debt        |
+| `reviewer`          | code review, PR review, security check                 |
+| `qa`                | testplan, edge cases, regressie, smoke test             |
+| `tester`            | test schrijven, unit test, integration test             |
+| `data-engineer`     | database, schema, migratie, query, SQL                  |
+| `product-coach`     | product visie, product brief, MVP scope                 |
+| `design-researcher` | UX research, UI analyse, accessibility                  |
+| `copywriter`        | tekst schrijven, copy, email, social media              |
+| `marketing`         | marketing strategie, SEO, GEO, campagnes                |
+| `sales-coach`       | verkoop, objection handling, pitch, closing              |
+| `legal`             | juridisch, GDPR, contract, compliance                   |
+| `cfo`               | financieel, budget, ROI, belasting, factuur              |
+| `devops`            | CI/CD, Docker, deployment, monitoring                    |
+| `security`          | security audit, OWASP, vulnerability, CVE                |
+| `docs-writer`       | documentatie, README, API docs, changelog                |
+| `researcher`        | research, vergelijking, best practices                   |
+| `e2e-tester`        | browser test, playwright, frontend test                  |
 
 > **Agents vs Skills**: Agents worden gedelegeerd door de PM. Skills activeren automatisch op basis van je vraag. Dezelfde expertise, twee manieren om ze te gebruiken.
 
@@ -162,6 +165,11 @@ Skills worden automatisch geactiveerd wanneer Claude detecteert dat je vraag bij
 ## Settings & Safety
 
 De meegeleverde `settings.json` bevat:
+
+### Aanbevolen instellingen
+
+- `model`: `sonnet` -- aanbevolen model voor dagelijks gebruik
+- `effortLevel`: `high` -- maximale kwaliteit bij antwoorden
 
 ### Permissions (allow)
 
@@ -196,12 +204,13 @@ Dit starter pack is een **startpunt**. Pas het aan naar jouw situatie:
 
 ### Agent aanpassen voor jouw sector
 
-De business agents (legal, sales-coach, marketing, copywriter) zijn generiek gehouden. Maak ze specifiek:
+De business agents (legal, sales-coach, marketing, copywriter, cfo) zijn generiek gehouden. Maak ze specifiek:
 
 - `legal.md`: voeg jouw sectorspecifieke regelgeving toe
 - `sales-coach.md`: beschrijf jouw verkoopproces en klanttypen
 - `marketing.md`: voeg jouw kanalen en doelgroepen toe
 - `copywriter.md`: definieer jouw brand voice
+- `cfo.md`: voeg jouw vennootschapsstructuur en fiscale context toe
 
 ## Veelgestelde vragen
 
@@ -217,6 +226,9 @@ Het install script maakt automatisch backups aan met een timestamp.
 **Kan ik dit delen met mijn team?**
 Ja. Fork de repo, pas de context bestanden aan voor je team, en deel. De agents en commands zijn team-onafhankelijk.
 
+**Wat doen `model` en `effortLevel` in settings.json?**
+`model` bepaalt welk Claude model gebruikt wordt (sonnet is aanbevolen). `effortLevel` bepaalt hoeveel moeite Claude doet per antwoord (high = maximale kwaliteit).
+
 ---
 
-Gemaakt door Sam Willems. Gebaseerd op een productie-setup die dagelijks gebruikt wordt voor vastgoedsoftware, data-analyse en AI-tooling.
+Gemaakt door Sam Willems. Gebaseerd op een productie-setup die dagelijks gebruikt wordt.

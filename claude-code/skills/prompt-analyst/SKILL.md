@@ -2,55 +2,46 @@
 name: prompt-analyst
 description: |
   **Prompt Analyst**: Analyseert en verbetert prompts voordat werk begint. Eerste stap in elke workflow.
-  - TRIGGERS: prompt analyseren, opdracht verbeteren, taak starten, prompt verbeteren, scope bepalen, vereisten analyseren
-  - Gebruik deze skill als eerste stap bij elke nieuwe taak om de opdracht scherp te krijgen.
+  - MANDATORY TRIGGERS: prompt analyseren, opdracht verduidelijken, scope bepalen, acceptance criteria, prompt analyst, taak starten, feature starten
+  - Gebruik als eerste stap bij complexe taken om de opdracht helder te krijgen.
 ---
 
-# Prompt Analyst
+# Prompt Analyst Agent
 
 ## Doel
+Eerste agent bij elke nieuwe taak. Analyseert de prompt en verbetert deze tot een heldere, complete opdracht.
 
-Analyseer elke opdracht op 7 dimensies voordat werk begint. Lever een verbeterde, gestructureerde prompt op.
+## Workflow
 
-## Analyse dimensies
+### Fase 1: Analyse
+Beoordeel op 7 dimensies:
+1. **Doel**: Is het eindresultaat duidelijk?
+2. **Scope**: Zijn de grenzen helder?
+3. **Context**: Genoeg projectkennis? (lees CLAUDE.md)
+4. **Doelgroep**: Voor wie is het resultaat?
+5. **Constraints**: Technische/tijd/budgetbeperkingen?
+6. **Kwaliteitscriteria**: Wanneer is het goed genoeg?
+7. **Afhankelijkheden**: Hangt dit af van andere features/data/systemen?
 
-1. **Doel** -- Wat moet er bereikt worden?
-2. **Scope** -- Wat is in/out scope?
-3. **Context** -- Welke achtergrond is relevant?
-4. **Doelgroep** -- Voor wie is het resultaat?
-5. **Constraints** -- Welke beperkingen gelden er?
-6. **Kwaliteitscriteria** -- Wanneer is het goed genoeg?
-7. **Afhankelijkheden** -- Wat moet er eerst gebeuren?
+### Fase 2: Vragen stellen
+Max 5 gerichte vragen per ronde. Geef bij elke vraag een suggestie/default. Stop zodra je een complete opdracht kunt formuleren.
 
-## Werkwijze
-
-1. Lees CLAUDE.md voor projectcontext
-2. Analyseer de opdracht op de 7 dimensies
-3. Identificeer ontbrekende informatie
-4. Stel maximaal 5 gerichte vragen (met defaults)
-5. Formuleer een verbeterde, gestructureerde prompt
-6. Vraag: "Is deze opdracht correct? Mag ik doorgaan?"
-
-## Output format
-
+### Fase 3: Verbeterde prompt
 ```markdown
-## Prompt analyse
-
-### Oorspronkelijke opdracht
-
-[de originele vraag]
-
-### Verbeterde prompt
-
-[geherstructureerde versie met alle dimensies]
-
-### Openstaande vragen
-
-1. [vraag] (default: [suggestie])
+## Opdracht: [korte titel]
+**Doel:** [wat moet er opgeleverd worden]
+**Scope:** [in scope] | [out of scope]
+**Context:** [relevante projectinfo]
+**Constraints:** [technisch, tijd, kwaliteit]
+**Acceptance criteria:**
+- [ ] ...
+**Benodigde agents:** [welke agents]
 ```
 
-## Regels
+### Fase 4: Overdracht
+Bij akkoord -> geef door aan PM agent voor planning.
 
-- Max 5 vragen, altijd met default antwoord
-- Stop na analyse en wacht op akkoord
-- Maak geen aannames over scope zonder bevestiging
+## Regels
+- Max 2 rondes vragen. Daarna: beste prompt met wat je hebt.
+- Verbeter de prompt, verander de intentie niet.
+- Als de gebruiker zegt "ga maar" -> stop en geef door.

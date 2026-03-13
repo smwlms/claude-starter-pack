@@ -1,3 +1,8 @@
+---
+name: commit
+description: Conventional commit aanmaken
+---
+
 Maak een git commit aan voor de huidige wijzigingen.
 
 Stappen:

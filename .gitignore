@@ -1,1 +1,6 @@
 .DS_Store
+
+# Personal context files (use templates, don't commit filled versions)
+context/about-me-filled.md
+context/my-voice-filled.md
+context/my-rules-filled.md

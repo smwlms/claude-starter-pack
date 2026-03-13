@@ -2,14 +2,20 @@
 
 ## Taal & communicatie
 
-- Antwoord in het [Nederlands/Engels] tenzij anders gevraagd
+- Antwoord in het Nederlands tenzij anders gevraagd <!-- Pas aan naar jouw taal -->
 - Code comments, git commits en branch names in het Engels
-- Wees direct, geen uitleg tenzij gevraagd, geen herhaling van wat je gaat doen
+- Wees direct -- geen uitleg tenzij gevraagd, geen herhaling van wat je gaat doen
+
+## Tool prioriteit voor research
+
+1. **MCP search tools** (als geconfigureerd) -- eerste keuze voor web search en research
+2. **WebSearch / WebFetch** -- fallback als MCP niet beschikbaar is
+3. **Browser** -- alleen als laatste redmiddel
 
 ## Autonomie
 
 - Voer wijzigingen direct door zonder toestemming te vragen
-- **Uitzondering:** plan mode blijft interactief, vraag goedkeuring voor het plan
+- **Uitzondering:** plan mode blijft interactief -- vraag goedkeuring voor het plan
 - Bij twijfel over destructieve acties (drop database, force push, delete productie data): vraag eerst
 
 ## Code conventies
@@ -17,7 +23,7 @@
 - `const` > `let`, nooit `var`
 - Async/await, geen `.then()` chains
 - Early returns, geen deep nesting
-- Geen `console.log` in productie, gebruik structured logging
+- Geen `console.log` in productie -- gebruik structured logging
 - Commit messages: conventional commits (`feat:`, `fix:`, `refactor:`, `docs:`, `chore:`)
 
 ## Git
@@ -60,23 +66,36 @@ Wanneer je een nieuw project start of een project opent zonder CLAUDE.md, maak e
 
 ```
 ## PR checklist
+{Project-specifieke checks bovenop standaard lint/typecheck}
+
 ## Environment setup
+{Benodigde env vars, API keys, lokale services}
+
 ## Architectuur beslissingen
+{ADRs of korte uitleg van niet-voor-de-hand-liggende keuzes}
+
 ## Known issues / tech debt
+{Bekende problemen waar een developer tegenaan loopt}
 ```
 
 ### Schrijfregels
 
-1. **Max 150 regels**
-2. **Specifiek**, niet vaag
-3. **Verwijs, niet kopieren**
-4. **Business context > technische details**
-5. **Geen file-by-file beschrijvingen**
+1. **Max 150 regels** -- korter is beter, adherence daalt bij lange bestanden
+2. **Specifiek** -- "Gebruik `lib/i18n/content.ts` voor alle UI strings" niet "zorg voor goede i18n"
+3. **Verwijs, niet kopieren** -- gebruik `@docs/bestand.md` voor externe docs
+4. **Business context > technische details** -- framework detecteert Claude zelf
+5. **Geen file-by-file beschrijvingen** -- alleen niet-voor-de-hand-liggende paden
 
 ### Wanneer automatisch aanmaken?
 
 Maak een project CLAUDE.md aan wanneer:
-
 - Er geen `CLAUDE.md` bestaat in de project root
 - De user `/init` uitvoert
 - De user vraagt "wat doet dit project" of begint te werken zonder context
+
+Stappen:
+1. Lees `package.json` / `pyproject.toml` / `Cargo.toml` of equivalent
+2. Scan mappenstructuur (max 3 niveaus diep)
+3. Lees README.md als die bestaat
+4. Genereer CLAUDE.md volgens bovenstaand sjabloon
+5. Vraag: "Ik heb een CLAUDE.md aangemaakt. Wil je iets toevoegen?"

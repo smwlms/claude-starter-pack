@@ -23,9 +23,47 @@ Dit kost je 30 tot 60 minuten, maar bespaart je uren op lange termijn.
 
 Er zijn twee manieren om je profiel op te bouwen.
 
-### Optie A: Laat AI je profiel genereren (aanbevolen)
+### Optie A: Exporteer je context uit een bestaande AI (aanbevolen)
 
-Als je al een tijd ChatGPT, Gemini of een andere AI-assistent gebruikt, zit daar waardevolle context in. Open een nieuw gesprek en plak deze prompt:
+Als je al een tijd ChatGPT, Gemini, Claude of een andere AI-assistent gebruikt, zit daar waardevolle context in. Gebruik een van deze twee prompts om die context te exporteren.
+
+#### Voor AI's met geheugen/opgeslagen context (ChatGPT Memories, Claude Projects)
+
+Open een nieuw gesprek en plak deze prompt:
+
+```
+Export all of my stored memories and any context you've learned about me from past conversations. Preserve my words verbatim where possible, especially for instructions and preferences.
+
+## Categories (output in this order):
+
+1. **Instructions**: Rules I've explicitly asked you to follow going forward -- tone, format, style, "always do X", "never do Y", and corrections to your behavior. Only include rules from stored memories, not from conversations.
+
+2. **Identity**: Name, age, location, education, family, relationships, languages, and personal interests.
+
+3. **Career**: Current and past roles, companies, and general skill areas.
+
+4. **Projects**: Projects I meaningfully built or committed to. Ideally ONE entry per project. Include what it does, current status, and any key decisions. Use the project name or a short descriptor as the first words of the entry.
+
+5. **Preferences**: Opinions, tastes, and working-style preferences that apply broadly.
+
+## Format:
+
+Use section headers for each category. Within each category, list one entry per line, sorted by oldest date first. Format each line as:
+
+[YYYY-MM-DD] - Entry content here.
+
+If no date is known, use [unknown] instead.
+
+## Output:
+- Wrap the entire export in a single code block for easy copying.
+- After the code block, state whether this is the complete set or if more remain.
+```
+
+**Tip:** Als de AI zegt dat de export compleet is maar je vermoedt dat er meer is, vraag: _"Are there any more memories or context you haven't included yet?"_
+
+#### Voor AI's zonder geheugen (of als aanvulling op bovenstaande)
+
+Als je AI geen opgeslagen geheugen heeft maar wel gespreksgeschiedenis, gebruik dan deze prompt:
 
 ```
 Analyseer mijn volledige gespreksgeschiedenis en maak een "User Operating Manual" over mij.
@@ -142,8 +180,9 @@ Dit installeert:
 
 - `~/.claude/CLAUDE.md` -- globale instructies
 - `~/.claude/settings.json` -- permissions en hooks
-- `~/.claude/commands/` -- 8 slash commands
-- `~/.claude/agents/` -- 17 gespecialiseerde agents
+- `~/.claude/commands/` -- 10 slash commands
+- `~/.claude/agents/` -- 18 gespecialiseerde agents
+- `~/.claude/skills/` -- 19 auto-trigger skills
 
 Pas daarna `~/.claude/CLAUDE.md` aan naar jouw voorkeuren.
 
@@ -177,8 +216,9 @@ Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
 
 - `claude-code/CLAUDE.md` -- globale instructies template
 - `claude-code/settings.json` -- permissions, hooks, safety rules
-- `claude-code/agents/` -- 17 gespecialiseerde agents
-- `claude-code/commands/` -- 8 slash commands
+- `claude-code/agents/` -- 18 gespecialiseerde agents
+- `claude-code/commands/` -- 10 slash commands
+- `claude-code/skills/` -- 19 auto-trigger skills
 - `install.sh` -- automatische installer
 
 ### Cowork (voor niet-technische gebruikers)
@@ -198,16 +238,18 @@ Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
 | `qa`                | Testplannen, regressies, edge cases                  |
 | `tester`            | Tests schrijven en draaien (unit, integration, e2e)  |
 | `data-engineer`     | Schema's, migraties, queries, performance            |
-| `product-coach`     | Product visie verhelderen via gerichte vragen        |
+| `product-coach`     | Product visie verhelderen via gerichte vragen         |
 | `design-researcher` | UX/UI onderzoek, visueel design, patterns            |
 | `copywriter`        | Teksten voor diverse kanalen                         |
 | `marketing`         | Strategie, SEO, GEO, social media, email             |
 | `sales-coach`       | Verkoopstrategie, scripts, objection handling        |
 | `legal`             | Juridische vragen, compliance, GDPR                  |
+| `cfo`               | Financiele analyse, budgettering, fiscaal advies     |
 | `devops`            | CI/CD, Docker, deployment, monitoring                |
 | `security`          | Security audits, OWASP, dependency scanning          |
 | `docs-writer`       | API docs, README's, user guides                      |
 | `researcher`        | Deep research, technologie-keuzes, best practices    |
+| `e2e-tester`        | Playwright CLI browser testing, visuele regressie    |
 
 ## Beschikbare slash commands
 
@@ -220,4 +262,6 @@ Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
 | `/debug`        | Systematisch debuggen                                        |
 | `/refactor`     | Code opschonen                                               |
 | `/ship`         | Pre-ship checklist (lint, tests, build)                      |
+| `/design`       | UI/UX design analyseren en verbeteren                        |
+| `/research`     | Research uitvoeren over een onderwerp                        |
 | `/init-project` | CLAUDE.md aanmaken voor een project                          |

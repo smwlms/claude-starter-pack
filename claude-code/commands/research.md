@@ -1,13 +1,13 @@
 ---
 name: research
-description: Voer research uit over het opgegeven onderwerp
+description: Research uitvoeren over een onderwerp
 ---
 
 Voer research uit over het opgegeven onderwerp.
 
 Aanpak:
 
-1. Gebruik WebSearch als primaire bron
+1. Gebruik WebSearch als primaire bron (of MCP search tools als geconfigureerd)
 2. Synthetiseer de resultaten -- geen copy-paste, maar een helder eigen antwoord
 3. Verifieer claims via meerdere bronnen waar mogelijk
 

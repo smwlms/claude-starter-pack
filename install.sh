@@ -2,7 +2,7 @@
 # ============================================
 # Claude Starter Pack Installer
 # Installeert CLAUDE.md, settings.json,
-# agents en slash commands naar ~/.claude/
+# agents, commands en skills naar ~/.claude/
 # ============================================
 
 set -e
@@ -111,20 +111,31 @@ echo "  $skill_count skills geinstalleerd"
 
 # Installeer Playwright CLI (optioneel)
 echo ""
-if ! command -v playwright-cli &> /dev/null; then
+if ! command -v playwright &> /dev/null && ! command -v playwright-cli &> /dev/null; then
     read -p "Playwright CLI installeren voor E2E testing? (j/n) " -n 1 -r
     echo ""
     if [[ $REPLY =~ ^[jJyY]$ ]]; then
-        echo "  npm install -g @playwright/cli..."
-        npm install -g @playwright/cli 2>/dev/null
         echo "  Chromium installeren..."
-        npx playwright install chromium 2>/dev/null
-        echo "  Playwright CLI geinstalleerd"
+        npx playwright install chromium 2>/dev/null || echo "  Playwright install overgeslagen (installeer later met: npx playwright install chromium)"
+        echo "  Playwright geinstalleerd"
     else
-        echo "  Playwright CLI overgeslagen (installeer later met: npm install -g @playwright/cli)"
+        echo "  Playwright overgeslagen"
     fi
 else
-    echo "Playwright CLI is al geinstalleerd."
+    echo "Playwright is al geinstalleerd."
+fi
+
+# Verificatie
+echo ""
+echo "Stap 6: Verificatie..."
+errors=0
+[ ! -f "$CLAUDE_DIR/CLAUDE.md" ] && echo "  ❌ CLAUDE.md ontbreekt" && errors=$((errors + 1))
+[ ! -f "$CLAUDE_DIR/settings.json" ] && echo "  ❌ settings.json ontbreekt" && errors=$((errors + 1))
+[ $cmd_count -eq 0 ] && echo "  ❌ Geen commands geinstalleerd" && errors=$((errors + 1))
+[ $agent_count -eq 0 ] && echo "  ❌ Geen agents geinstalleerd" && errors=$((errors + 1))
+[ $skill_count -eq 0 ] && echo "  ❌ Geen skills geinstalleerd" && errors=$((errors + 1))
+if [ $errors -eq 0 ]; then
+    echo "  ✅ Alle bestanden correct geinstalleerd"
 fi
 
 # Samenvatting
@@ -138,21 +149,22 @@ echo "  settings.json (permissions + hooks)"
 echo ""
 echo "Slash commands ($cmd_count):"
 for cmd in "$CLAUDE_DIR/commands/"*.md; do
-    echo "  /$(basename "$cmd" .md)"
+    [ -f "$cmd" ] && echo "  /$(basename "$cmd" .md)"
 done
 echo ""
 echo "Agents ($agent_count):"
 for agent in "$CLAUDE_DIR/agents/"*.md; do
-    echo "  $(basename "$agent" .md)"
+    [ -f "$agent" ] && echo "  $(basename "$agent" .md)"
+done
+echo ""
+echo "Skills ($skill_count):"
+for skill_dir in "$CLAUDE_DIR/skills/"*/; do
+    [ -d "$skill_dir" ] && echo "  $(basename "$skill_dir")"
 done
 
 echo ""
 echo "Volgende stap:"
-echo "  1. Pas CLAUDE.md aan naar jouw voorkeuren"
+echo "  1. Pas ~/.claude/CLAUDE.md aan naar jouw voorkeuren (taal, conventies)"
 echo "  2. Vul de context bestanden in (context/about-me.md, etc.)"
 echo "  3. Start Claude Code en test met: /start wat is mijn setup?"
-echo ""
-echo "Verifieer met:"
-echo "  claude /memory        -> geladen CLAUDE.md"
-echo "  claude /permissions   -> actieve permissions"
 echo ""

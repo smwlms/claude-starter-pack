@@ -1,3 +1,8 @@
+---
+name: review
+description: Code review uitvoeren op gewijzigde of opgegeven bestanden
+---
+
 Voer een grondige code review uit op de gewijzigde of opgegeven bestanden.
 
 Controleer in deze volgorde:
@@ -12,6 +17,10 @@ Controleer in deze volgorde:
 Output formaat:
 
 - Groepeer per bestand
-- Gebruik kritiek / suggestie / goed labels
+- Gebruik 🔴 kritiek / 🟡 suggestie / 🟢 goed
 - Geef concrete code-voorbeelden bij kritieke issues
 - Eindig met een samenvatting: "klaar om te mergen" of "eerst oplossen"
+
+## Context
+
+$ARGUMENTS

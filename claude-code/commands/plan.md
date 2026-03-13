@@ -1,3 +1,8 @@
+---
+name: plan
+description: Implementatieplan maken voor een taak
+---
+
 Maak een gestructureerd implementatieplan voor de gevraagde taak. Dit is interactief -- wacht op goedkeuring voor je begint.
 
 Stappen:
@@ -38,3 +43,7 @@ Output formaat:
 ---
 
 Wacht op "go" of feedback voor je begint met implementeren.
+
+## Context
+
+$ARGUMENTS

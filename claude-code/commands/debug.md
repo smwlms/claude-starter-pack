@@ -1,3 +1,8 @@
+---
+name: debug
+description: Systematisch debuggen van een probleem
+---
+
 Analyseer en los het probleem systematisch op.
 
 Aanpak:
@@ -22,3 +27,7 @@ Output:
 - Beschrijf de root cause in een zin
 - Toon de fix met diff
 - Vermeld of er tests nodig zijn om regressie te voorkomen
+
+## Context
+
+$ARGUMENTS
