@@ -1,0 +1,103 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(npx *)",
+      "Bash(pnpm *)",
+      "Bash(yarn *)",
+      "Bash(node *)",
+      "Bash(git *)",
+      "Bash(gh *)",
+      "Bash(cat *)",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(cp *)",
+      "Bash(mv *)",
+      "Bash(rm *)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Bash(rg *)",
+      "Bash(curl *)",
+      "Bash(which *)",
+      "Bash(echo *)",
+      "Bash(touch *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(diff *)",
+      "Bash(sort *)",
+      "Bash(pkill *)",
+      "Bash(kill *)",
+      "Bash(sleep *)",
+      "Bash(tsc *)",
+      "Bash(python3 *)",
+      "Bash(python *)",
+      "Bash(pip *)",
+      "Bash(pip3 *)",
+      "Bash(pytest *)",
+      "Bash(ruff *)",
+      "Bash(brew *)",
+      "Bash(sudo *)",
+      "Bash(ssh *)",
+      "Bash(rsync *)",
+      "Bash(du *)",
+      "Bash(df *)",
+      "Bash(ping *)",
+      "Bash(lsof *)",
+      "Bash(ps *)",
+      "Bash(diskutil *)",
+      "Bash(open *)",
+      "Bash(pbcopy *)",
+      "Bash(pbpaste *)",
+      "Bash(jq *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "Bash(xargs *)",
+      "Bash(tee *)",
+      "Bash(export *)",
+      "Bash(source *)",
+      "Bash(chmod *)",
+      "Bash(chown *)",
+      "Bash(docker *)",
+      "Bash(docker-compose *)",
+      "Bash(sqlite3 *)",
+      "Bash(gcloud *)",
+      "Bash(supabase *)",
+      "Bash(claude *)",
+      "Bash(playwright *)",
+      "Bash(launchctl *)",
+      "Read",
+      "Edit",
+      "Write",
+      "WebFetch(*)",
+      "WebSearch"
+    ],
+    "deny": []
+  },
+  "model": "sonnet",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // .tool_input.filePath // empty' 2>/dev/null); if [ -n \"$FILE\" ] && echo \"$FILE\" | grep -qE '\\.(tsx?|jsx?|json|css|scss|md)$'; then npx prettier --write \"$FILE\" 2>/dev/null || true; fi"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude heeft je aandacht nodig\" with title \"Claude Code\"' 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  },
+  "effortLevel": "high"
+}

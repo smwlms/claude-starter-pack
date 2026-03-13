@@ -6,11 +6,42 @@
 - Code comments, git commits en branch names in het Engels
 - Wees direct -- geen uitleg tenzij gevraagd, geen herhaling van wat je gaat doen
 
+## Agent-hierarchie
+
+De standaard flow voor taken via `/start`:
+
+```
+Gebruiker -> /start -> [fast: direct PM] of [strict: prompt-analyst -> handoff -> PM]
+PM -> specialist agents -> reviewer gate -> output
+```
+
+- **fast modus**: 1 duidelijke stap, max 1 agent -> skip prompt-analyst, PM voert direct uit
+- **strict modus**: meerdere stappen, onduidelijke scope -> volledige flow met handoff-contract
+- **Quality gate**: reviewer checkt output op AC, secrets, types voor afronden
+
+Beschikbare agents: prompt-analyst, pm, senior-dev, reviewer, qa, tester, data-engineer, devops, security, docs-writer, researcher, e2e-tester, product-coach, copywriter, design-researcher, legal-makelaar, sales-coach, marketing, cfo, geschillen-communicatie, mobile-dev, frontend-architect, api-designer, hr.
+
+## Permission profiles
+
+Wissel profiel via `~/.claude/switch-profile.sh [safe|dev|elevated]`:
+
+- **safe**: alleen lezen, schrijven, git (read-only), npm. Geen rm, kill, sudo, ssh, git push.
+- **dev** (standaard): volledige development tools, destructieve acties geblokkeerd.
+- **elevated**: alle permissies, geen deny rules. Bewust inschakelen voor specifieke taken.
+
 ## Tool prioriteit voor research
 
 1. **MCP search tools** (als geconfigureerd) -- eerste keuze voor web search en research
 2. **WebSearch / WebFetch** -- fallback als MCP niet beschikbaar is
 3. **Browser** -- alleen als laatste redmiddel
+
+## Cowork modus
+
+- Skills activeren automatisch op basis van context.
+- Bij complexe taken: vraag de gebruiker of je de PM-flow wil volgen.
+- Bij simpele taken: lever direct het resultaat.
+- Refereer naar about-me.md, my-voice.md en my-rules.md voor persoonlijke context.
+- Gebruik `/ask` voor directe vragen zonder planning overhead.
 
 ## Autonomie
 
@@ -25,6 +56,10 @@
 - Early returns, geen deep nesting
 - Geen `console.log` in productie -- gebruik structured logging
 - Commit messages: conventional commits (`feat:`, `fix:`, `refactor:`, `docs:`, `chore:`)
+
+## Error handling
+
+Structured logging op boundaries. Verplichte velden: level, timestamp, service, event, request_id, error, error_code. Log 1 keer per fout op boundary. Redact secrets en PII.
 
 ## Git
 

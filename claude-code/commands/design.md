@@ -9,7 +9,6 @@ Werk als de **design-researcher agent** in combinatie met kennis van de tech sta
 ## Stappen
 
 ### Fase 1: Context begrijpen
-
 1. Lees CLAUDE.md voor bestaand design systeem, kleuren, stack.
 2. Lees de opgegeven component/pagina bestanden.
 3. Als er geen specifiek bestand is opgegeven: scan de UI-laag van het project.
@@ -19,14 +18,13 @@ Werk als de **design-researcher agent** in combinatie met kennis van de tech sta
    - Zijn er specifieke problemen die de gebruiker ervaart?
 
 ### Fase 2: Design analyse
-
 Beoordeel op deze dimensies:
 
 - **Gebruikersflow**: Is de route naar het doel helder en logisch?
 - **Visuele hierarchie**: Valt het belangrijkste het meest op?
 - **Consistentie**: Kloppen spacing, kleuren, typografie met de rest van het project?
 - **Call-to-action**: Zijn CTA's duidelijk, zichtbaar en goed geplaatst?
-- **Mobile-first**: Werkt het goed op telefoon?
+- **Mobile-first**: Werkt het goed op telefoon? (veel gebruikers browsen mobiel)
 - **Laadbaarheid**: Zware assets, blocking renders, onnodige componenten?
 - **Accessibility**: Contrast, focusstates, aria-labels, keyboard navigatie?
 - **Friction**: Wat vertraagt of frustreert de gebruiker?
@@ -37,37 +35,33 @@ Beoordeel op deze dimensies:
 ## Design analyse: [pagina/component]
 
 ### Wat werkt goed
-
 - ...
 
 ### Verbeterpunten
-
-| #   | Probleem | Waarom | Oplossing | Impact | Effort |
-| --- | -------- | ------ | --------- | ------ | ------ |
-| 1   | ...      | ...    | ...       | Hoog   | Laag   |
+| # | Probleem | Waarom | Oplossing | Impact | Effort |
+|---|----------|--------|-----------|--------|--------|
+| 1 | ...      | ...    | ...       | Hoog   | Laag   |
 
 ### Quick wins (direct implementeerbaar)
-
 - ...
 
 ### Grotere wijzigingen (plan eerst)
-
 - ...
+
+### Referenties
+- [vergelijkbare implementatie/patroon]
 ```
 
 ### Fase 4: Implementatie (na goedkeuring)
-
 - Quick wins direct implementeren.
 - Voor grotere wijzigingen: maak eerst een plan via `/plan`.
 - Gebruik de **design-researcher agent** voor visuele research waar nodig.
 
 ## Regels
-
 - Denk altijd mobile-first.
 - Elke aanbeveling moet een reden hebben (usability principe, conversiedoel, of benchmark).
 - Houd rekening met de bestaande tech stack -- geen nieuwe libraries voorstellen zonder reden.
-- Lever concrete code aanpassingen, geen vage suggesties.
+- Lever concrete code aanpassingen, geen vage "maak het mooier" suggesties.
 
 ## Context
-
 $ARGUMENTS

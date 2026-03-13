@@ -1,47 +1,36 @@
 # Claude Starter Pack voor Vastgoedmakelaars
 
-> Alles wat je nodig hebt om Claude te laten werken als jouw persoonlijke assistent voor vastgoedmakelaardij. Met ingebakken kennis van BIV, GDPR, anti-witwas, de Belgische vastgoedmarkt, en meer.
+> Een complete Claude-configuratie voor Belgische vastgoedmakelaars. Met ingebakken kennis van BIV, GDPR, anti-witwas, Belgische fiscaliteit, en een hierarchische agent-architectuur die werkt in zowel Claude Code CLI als Cowork.
 
-## Wat is dit?
-
-Een kant-en-klaar configuratiepakket voor Claude, specifiek voor Belgische vastgoedmakelaars:
-
-- **Persoonlijke context** -- templates om Claude te vertellen wie je bent, je kantoor, je regio
-- **20 gespecialiseerde agents** -- inclusief legal-makelaar, marketing-specialist, geschillen-communicatie
-- **21 auto-trigger skills** -- dezelfde expertise, automatisch geactiveerd op basis van context
-- **10 slash commands** -- workflows voor plannen, reviewen, committen, debuggen en meer
-- **Veilige defaults** -- permissions, hooks en safety rules
-- **Beginner guide** -- stap-voor-stap uitleg
-
-## Wat weet Claude over vastgoed?
-
-Met dit starter pack kent Claude:
+## Wat weet Claude na installatie?
 
 - **BIV-regelgeving**: deontologie, plichtenleer, tuchtrecht
 - **Informatieplichten**: EPC, bodemattest, stedenbouwkundig uittreksel, overstromingskaarten
 - **Huurrecht**: Vlaams Woninghuurdecreet, huurwaarborg, opzegregels
-- **Verkooprecht**: compromis, voorkooprechten, opschortende voorwaarden
+- **Verkooprecht**: compromis, voorkooprechten, opschortende voorwaarden, Wet Breyne
 - **GDPR**: verwerkingsregister, toestemming, bewaartermijnen voor klantdata
 - **Anti-witwas**: identificatieplicht, waakzaamheidsplicht, meldingsplicht CFI
-- **Belgische fiscaliteit**: VenB, BTW (21%/6%), VVPRbis, VAPZ/IPT
-- **Marketing**: Immoweb, Zimmo, GEO (AI search optimalisatie), SEO
+- **Belgische fiscaliteit**: VenB 20%/25%, BTW 21%/6%, VVPRbis, VAPZ/IPT, CO2-bijdrage
+- **Marketing**: Immoweb/Zimmo optimalisatie, GEO (AI search), SEO, seizoenspatronen
 - **Verkoopproces**: lead -> intake -> mandaat -> marketing -> bezichtiging -> bod -> compromis -> akte
+- **Arbeidsrecht**: Belgische arbeidsovereenkomsten, opzegtermijnen, freelance vs werknemer
 
 ## Quick Start
 
-### Claude Code CLI (developers)
+### Claude Code CLI
 
 ```bash
 git clone [deze-repo]
 cd claude-starter-pack
-git checkout vastgoed
 chmod +x install.sh
 ./install.sh
 ```
 
-### Claude Cowork (niet-technisch)
+Het script laat je een permission profiel kiezen (safe/dev/elevated) en installeert alles naar `~/.claude/`.
 
-Kopieer de prompt uit `setup-prompt.md` en plak die in een nieuw Cowork gesprek. Claude stelt je vastgoed-specifieke vragen en maakt alle bestanden voor je aan.
+### Cowork
+
+Kopieer de prompt uit `setup-prompt.md` en plak die in een nieuw gesprek. Claude stelt vastgoed-specifieke vragen en maakt alle bestanden voor je aan.
 
 ### Beginners
 
@@ -49,69 +38,148 @@ Start met `guide/beginner-guide.md`.
 
 ---
 
-## Agents
+## Architectuur
 
-### Workflow agents
+```
+Gebruiker -> /start -> [fast/strict] -> prompt-analyst -> handoff -> PM
+PM -> specialist agents -> reviewer gate -> output
+```
 
-| Agent            | Doel                                                           |
-| ---------------- | -------------------------------------------------------------- |
-| `prompt-analyst` | Analyseert en verbetert prompts voordat werk begint            |
-| `pm`             | Orchestrator: plant werk, stuurt agents aan, bewaakt kwaliteit |
+- **fast modus**: simpele taken skippen de prompt-analyst
+- **strict modus**: volledige flow met handoff-contract en planning
+- **Quality gate**: reviewer checkt output op AC, secrets, types
 
-### Development agents
+### Permission profiles
 
-| Agent           | Doel                                                          |
-| --------------- | ------------------------------------------------------------- |
-| `senior-dev`    | Codebase analyse, architectuur, product/UX inzichten          |
-| `reviewer`      | Code review: security, readability, consistency               |
-| `qa`            | Testplannen, regressies, smoke tests, edge cases              |
-| `tester`        | Tests schrijven en draaien (unit, integration, e2e)           |
-| `data-engineer` | Database schema's, migraties, queries, performance            |
-| `devops`        | CI/CD, Docker, deployment, monitoring, infra                  |
-| `security`      | Security audits, OWASP, dependency scanning                   |
-| `docs-writer`   | API docs, README's, user guides, changelogs                   |
-| `researcher`    | Deep research, technologie-keuzes, best practices             |
-| `e2e-tester`    | Playwright CLI browser testing, live flows, visuele regressie |
+| Profiel | Wat mag het | Wanneer |
+|---------|-------------|---------|
+| **safe** | Lezen, schrijven, git read-only, npm | Standaard, niet-technisch gebruik |
+| **dev** | Alles van safe + rm, ssh, docker, MCP's | Development (aanbevolen voor developers) |
+| **elevated** | Alles, geen beperkingen | Specifieke taken die alles nodig hebben |
 
-### Vastgoed agents
-
-| Agent                       | Doel                                                        |
-| --------------------------- | ----------------------------------------------------------- |
-| `product-coach`             | Product visie verhelderen via gerichte vragen                |
-| `copywriter`                | Property beschrijvingen, website, email, social media        |
-| `marketing-specialist`      | Strategie, SEO, GEO, Immoweb/Zimmo, social media           |
-| `sales-coach`               | Mandaat binnenhalen, bezichtigingen, objection handling      |
-| `legal-makelaar`            | BIV, huurrecht, verkooprecht, GDPR, anti-witwas             |
-| `cfo`                       | Belgische fiscaliteit, VenB, BTW, vennootschapsstructuur    |
-| `geschillen-communicatie`   | Dossierbeheer geschillen, brieven verzekeraars/advocaten    |
-| `design-researcher`         | UX/UI onderzoek, visueel design, patterns                   |
-
-## Placeholders aanpassen
-
-Na installatie moet je de volgende placeholders vervangen in de agents en context bestanden:
-
-| Placeholder       | Voorbeeld                    |
-| ----------------- | ---------------------------- |
-| `[BEDRIJFSNAAM]`  | Peeters Vastgoed             |
-| `[REGIO]`         | Oost-Vlaanderen              |
-| `[BIV-NUMMER]`    | 123.456                      |
-| `[NAAM]`          | Marie Peeters                |
-| `[RECHTSVORM]`    | BV                           |
-| `[KANTOOR_TYPE]`  | verkoop en verhuur           |
-
-Of gebruik de `setup-prompt.md` in Cowork -- Claude vult alles automatisch in.
-
-## Veelgestelde vragen
-
-**Kan Claude juridisch advies geven?**
-Claude geeft juridische informatie en analyse, maar voegt altijd een disclaimer toe. Het is geen vervanging voor een advocaat of het BIV.
-
-**Werkt dit ook voor Waalse of Brusselse makelaars?**
-De regelgeving focus ligt op Vlaanderen (Woninghuurdecreet, Vlaamse Codex Wonen). Voor Wallonie en Brussel past Claude de analyse aan, maar de templates zijn Vlaams-gericht.
-
-**Kan ik agents verwijderen die ik niet nodig heb?**
-Ja. Verwijder het `.md` bestand uit `~/.claude/agents/`.
+Wissel met: `~/.claude/switch-profile.sh [safe|dev|elevated]`
 
 ---
 
-Gebaseerd op de Claude Starter Pack door Sam Willems. Aangepast voor Belgische vastgoedmakelaars.
+## Wat zit erin?
+
+```
+claude-starter-pack/
+|-- README.md
+|-- install.sh
+|-- setup-prompt.md
+|-- VERSION
+|-- CHANGELOG.md
+|
+|-- guide/
+|   +-- beginner-guide.md
+|
+|-- context/                     # Vul in met jouw gegevens
+|   |-- about-me.md
+|   |-- my-voice.md
+|   +-- my-rules.md
+|
+|-- examples/
+|   |-- about-me-example.md
+|   |-- my-voice-example.md
+|   +-- my-rules-example.md
+|
+|-- claude-code/
+|   |-- CLAUDE.md               # Agent-hierarchie, profiles, cowork modus
+|   |-- settings.safe.json
+|   |-- settings.dev.json
+|   |-- settings.elevated.json
+|   |-- switch-profile.sh
+|   |-- agents/                 # 24 agents
+|   |-- commands/               # 11 commands
+|   +-- skills/                 # 20 skills
+|
++-- cowork/
+    +-- setup-guide.md
+```
+
+## Agents (24)
+
+### Workflow
+| Agent | Doel |
+|-------|------|
+| `prompt-analyst` | Analyseert prompts, maakt handoff-contract |
+| `pm` | Orchestrator met fast/strict modus en reviewer gate |
+
+### Development
+| Agent | Doel |
+|-------|------|
+| `senior-dev` | Codebase analyse, architectuur, product/UX |
+| `reviewer` | Code review + quality gate |
+| `qa` | Testplannen, regressies, edge cases |
+| `tester` | Unit/integration/e2e tests |
+| `data-engineer` | Schema's, migraties, Supabase RLS |
+| `devops` | CI/CD, Docker, deployment |
+| `security` | OWASP, GDPR, dependency scanning |
+| `docs-writer` | API docs, README's, changelogs |
+| `researcher` | Deep research, technologie-keuzes |
+| `e2e-tester` | Playwright browser testing |
+| `mobile-dev` | iOS/Swift, React Native, App Store |
+| `frontend-architect` | Framework keuze, design system, Core Web Vitals |
+| `api-designer` | REST/GraphQL, auth, OpenAPI |
+
+### Vastgoed & Business
+| Agent | Doel |
+|-------|------|
+| `copywriter` | Property beschrijvingen, website, email, social |
+| `marketing` | SEO, GEO, Immoweb/Zimmo, campagnes |
+| `sales-coach` | Mandaat binnenhalen, scripts, timing matrix |
+| `legal-makelaar` | BIV, huurrecht, verkooprecht, anti-witwas |
+| `cfo` | Belgische fiscaliteit, VenB, BTW, VVPRbis |
+| `hr` | Arbeidsrecht, onboarding, verlof, evaluatie |
+| `geschillen-communicatie` | Dossierbeheer, brieven verzekeraars |
+| `product-coach` | Product visie, product brief |
+| `design-researcher` | UX/UI, Immoweb benchmarks |
+
+## Slash commands (11)
+
+| Command | Doel |
+|---------|------|
+| `/start` | Nieuwe taak (fast/strict modus, handoff-contract) |
+| `/plan` | Implementatieplan |
+| `/review` | Code review |
+| `/commit` | Conventional commit |
+| `/debug` | Systematisch debuggen |
+| `/refactor` | Code opschonen |
+| `/ship` | Pre-ship checklist (lint, tests, build) |
+| `/design` | UI/UX analyse |
+| `/research` | Research uitvoeren |
+| `/init-project` | Project CLAUDE.md aanmaken |
+| `/ask` | Directe vraag zonder planning |
+
+## Placeholders
+
+Na installatie moet je de volgende placeholders vervangen in `context/` bestanden:
+
+| Placeholder | Voorbeeld |
+|-------------|-----------|
+| `[BEDRIJFSNAAM]` | Peeters Vastgoed |
+| `[REGIO]` | Oost-Vlaanderen |
+| `[BIV-NUMMER]` | 123.456 |
+| `[NAAM]` | Marie Peeters |
+| `[RECHTSVORM]` | BV |
+
+Of gebruik `setup-prompt.md` in Cowork -- Claude vult alles automatisch in.
+
+## FAQ
+
+**Kan Claude juridisch advies geven?**
+Claude geeft juridische informatie en analyse met altijd een disclaimer. Het is geen vervanging voor een advocaat of het BIV.
+
+**Werkt dit ook voor Waalse of Brusselse makelaars?**
+De focus ligt op Vlaanderen. Voor Wallonie en Brussel past Claude de analyse aan, maar templates zijn Vlaams-gericht.
+
+**Wat is het verschil tussen safe/dev/elevated?**
+Safe is read-only + basis tools. Dev voegt rm, ssh, docker toe. Elevated verwijdert alle beperkingen. Wissel met `switch-profile.sh`.
+
+**Hoe werk ik in Cowork?**
+Skills activeren automatisch. Gebruik `/ask` voor directe vragen. Bij complexe taken zal Claude voorstellen de PM-flow te volgen.
+
+---
+
+Gebaseerd op een productie-setup die dagelijks gebruikt wordt voor vastgoedsoftware, data-analyse en AI-tooling.

@@ -1,8 +1,9 @@
 #!/bin/bash
 # ============================================
-# Claude Starter Pack Installer
-# Installeert CLAUDE.md, settings.json,
-# agents, commands en skills naar ~/.claude/
+# Claude Starter Pack Installer (Vastgoed)
+# Installeert CLAUDE.md, settings, agents,
+# commands, skills en permission profiles
+# naar ~/.claude/
 # ============================================
 
 set -e
@@ -12,8 +13,8 @@ CLAUDE_DIR="$HOME/.claude"
 SOURCE_DIR="$SCRIPT_DIR/claude-code"
 
 echo ""
-echo "Claude Starter Pack Installer"
-echo "=============================="
+echo "Claude Starter Pack Installer (Vastgoed)"
+echo "========================================="
 echo ""
 
 # Check of Claude Code geinstalleerd is
@@ -50,28 +51,39 @@ backup_if_exists "$CLAUDE_DIR/settings.json"
 
 # Installeer CLAUDE.md
 echo ""
-echo "Stap 2: Bestanden installeren..."
+echo "Stap 2: CLAUDE.md installeren..."
 cp "$SOURCE_DIR/CLAUDE.md" "$CLAUDE_DIR/CLAUDE.md"
 echo "  CLAUDE.md geinstalleerd"
 
-# Installeer settings.json (merge of overschrijf)
-if [ -f "$CLAUDE_DIR/settings.json" ]; then
-    read -p "  settings.json bestaat al. Overschrijven? (j/n) " -n 1 -r
-    echo ""
-    if [[ $REPLY =~ ^[jJyY]$ ]]; then
-        cp "$SOURCE_DIR/settings.json" "$CLAUDE_DIR/settings.json"
-        echo "  settings.json overschreven"
-    else
-        echo "  settings.json overgeslagen"
-    fi
-else
-    cp "$SOURCE_DIR/settings.json" "$CLAUDE_DIR/settings.json"
-    echo "  settings.json geinstalleerd"
-fi
+# Permission profiel kiezen
+echo ""
+echo "Stap 3: Permission profiel kiezen..."
+echo "  [1] safe     - Alleen lezen, schrijven, git, npm. Geen rm, kill, sudo, ssh."
+echo "  [2] dev      - Development: volledige tools, destructieve acties geblokkeerd. (aanbevolen)"
+echo "  [3] elevated - Alles. Geen beperkingen. Alleen voor ervaren gebruikers."
+echo ""
+read -p "Kies profiel (1/2/3, default=2): " -n 1 -r
+echo ""
+
+case "$REPLY" in
+    1) PROFILE="safe" ;;
+    3) PROFILE="elevated" ;;
+    *) PROFILE="dev" ;;
+esac
+
+# Installeer gekozen profiel + alle profielen
+cp "$SOURCE_DIR/settings.${PROFILE}.json" "$CLAUDE_DIR/settings.json"
+cp "$SOURCE_DIR/settings.safe.json" "$CLAUDE_DIR/settings.safe.json"
+cp "$SOURCE_DIR/settings.dev.json" "$CLAUDE_DIR/settings.dev.json"
+cp "$SOURCE_DIR/settings.elevated.json" "$CLAUDE_DIR/settings.elevated.json"
+cp "$SOURCE_DIR/switch-profile.sh" "$CLAUDE_DIR/switch-profile.sh"
+chmod +x "$CLAUDE_DIR/switch-profile.sh"
+echo "  Profiel '$PROFILE' geactiveerd"
+echo "  Alle profielen geinstalleerd (wissel met: ~/.claude/switch-profile.sh [safe|dev|elevated])"
 
 # Installeer slash commands
 echo ""
-echo "Stap 3: Slash commands installeren..."
+echo "Stap 4: Slash commands installeren..."
 cmd_count=0
 for cmd in "$SOURCE_DIR/commands/"*.md; do
     if [ -f "$cmd" ]; then
@@ -83,7 +95,7 @@ echo "  $cmd_count commands geinstalleerd"
 
 # Installeer agents
 echo ""
-echo "Stap 4: Agents installeren..."
+echo "Stap 5: Agents installeren..."
 agent_count=0
 for agent in "$SOURCE_DIR/agents/"*.md; do
     if [ -f "$agent" ]; then
@@ -95,7 +107,7 @@ echo "  $agent_count agents geinstalleerd"
 
 # Installeer skills
 echo ""
-echo "Stap 5: Skills installeren..."
+echo "Stap 6: Skills installeren..."
 skill_count=0
 if [ -d "$SOURCE_DIR/skills" ]; then
     for skill_dir in "$SOURCE_DIR/skills/"*/; do
@@ -109,17 +121,13 @@ if [ -d "$SOURCE_DIR/skills" ]; then
 fi
 echo "  $skill_count skills geinstalleerd"
 
-# Installeer Playwright CLI (optioneel)
+# Playwright (optioneel)
 echo ""
 if ! command -v playwright &> /dev/null && ! command -v playwright-cli &> /dev/null; then
-    read -p "Playwright CLI installeren voor E2E testing? (j/n) " -n 1 -r
+    read -p "Playwright installeren voor E2E testing? (j/n) " -n 1 -r
     echo ""
     if [[ $REPLY =~ ^[jJyY]$ ]]; then
-        echo "  Chromium installeren..."
-        npx playwright install chromium 2>/dev/null || echo "  Playwright install overgeslagen (installeer later met: npx playwright install chromium)"
-        echo "  Playwright geinstalleerd"
-    else
-        echo "  Playwright overgeslagen"
+        npx playwright install chromium 2>/dev/null || echo "  Playwright overgeslagen"
     fi
 else
     echo "Playwright is al geinstalleerd."
@@ -127,27 +135,28 @@ fi
 
 # Verificatie
 echo ""
-echo "Stap 6: Verificatie..."
+echo "Stap 7: Verificatie..."
 errors=0
 [ ! -f "$CLAUDE_DIR/CLAUDE.md" ] && echo "  ❌ CLAUDE.md ontbreekt" && errors=$((errors + 1))
 [ ! -f "$CLAUDE_DIR/settings.json" ] && echo "  ❌ settings.json ontbreekt" && errors=$((errors + 1))
-[ $cmd_count -eq 0 ] && echo "  ❌ Geen commands geinstalleerd" && errors=$((errors + 1))
-[ $agent_count -eq 0 ] && echo "  ❌ Geen agents geinstalleerd" && errors=$((errors + 1))
-[ $skill_count -eq 0 ] && echo "  ❌ Geen skills geinstalleerd" && errors=$((errors + 1))
+[ $cmd_count -eq 0 ] && echo "  ❌ Geen commands" && errors=$((errors + 1))
+[ $agent_count -eq 0 ] && echo "  ❌ Geen agents" && errors=$((errors + 1))
+[ $skill_count -eq 0 ] && echo "  ❌ Geen skills" && errors=$((errors + 1))
 if [ $errors -eq 0 ]; then
     echo "  ✅ Alle bestanden correct geinstalleerd"
 fi
 
 # Samenvatting
 echo ""
-echo "=============================="
+echo "========================================="
 echo "Installatie voltooid!"
 echo ""
 echo "Geinstalleerd in $CLAUDE_DIR:"
-echo "  CLAUDE.md (globale instructies)"
-echo "  settings.json (permissions + hooks)"
+echo "  CLAUDE.md            (globale instructies + agent-hierarchie)"
+echo "  settings.json        (profiel: $PROFILE)"
+echo "  switch-profile.sh    (wissel tussen safe/dev/elevated)"
 echo ""
-echo "Slash commands ($cmd_count):"
+echo "Commands ($cmd_count):"
 for cmd in "$CLAUDE_DIR/commands/"*.md; do
     [ -f "$cmd" ] && echo "  /$(basename "$cmd" .md)"
 done
@@ -163,8 +172,9 @@ for skill_dir in "$CLAUDE_DIR/skills/"*/; do
 done
 
 echo ""
-echo "Volgende stap:"
-echo "  1. Pas ~/.claude/CLAUDE.md aan naar jouw voorkeuren (taal, conventies)"
-echo "  2. Vul de context bestanden in (context/about-me.md, etc.)"
-echo "  3. Start Claude Code en test met: /start wat is mijn setup?"
+echo "Volgende stappen:"
+echo "  1. Vul de context bestanden in: context/about-me.md, my-voice.md, my-rules.md"
+echo "     (gebruik examples/ als inspiratie, of draai de setup-prompt in Cowork)"
+echo "  2. Pas ~/.claude/CLAUDE.md aan als je de taal of conventies wil wijzigen"
+echo "  3. Test met: /start schrijf een property beschrijving voor een appartement in Gent"
 echo ""

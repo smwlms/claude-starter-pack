@@ -1,12 +1,6 @@
----
-name: init-project
-description: Project CLAUDE.md aanmaken
----
-
 Analyseer de huidige projectmap en maak een CLAUDE.md aan als die er nog niet is.
 
 Stappen:
-
 1. Controleer of er al een CLAUDE.md bestaat in de project root
 2. Als die bestaat: toon de inhoud en vraag of ik hem wil updaten
 3. Als die ontbreekt:
@@ -24,7 +18,6 @@ Stappen:
    f. Vraag: "Wil je iets aanpassen of aanvullen?"
 
 Regels:
-
 - Max 150 regels
 - Specifiek, niet vaag
 - Business context > technische details (framework detecteer ik zelf)

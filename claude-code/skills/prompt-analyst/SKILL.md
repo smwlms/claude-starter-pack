@@ -1,7 +1,7 @@
 ---
 name: prompt-analyst
 description: |
-  **Prompt Analyst**: Analyseert en verbetert prompts voordat werk begint. Eerste stap in elke workflow.
+  **Prompt Analyst**: Analyseert en verbetert prompts voordat werk begint. Eerste stap in elke workflow -- beoordeelt op doel, scope, context, doelgroep, constraints en kwaliteitscriteria.
   - MANDATORY TRIGGERS: prompt analyseren, opdracht verduidelijken, scope bepalen, acceptance criteria, prompt analyst, taak starten, feature starten
   - Gebruik als eerste stap bij complexe taken om de opdracht helder te krijgen.
 ---
@@ -39,9 +39,16 @@ Max 5 gerichte vragen per ronde. Geef bij elke vraag een suggestie/default. Stop
 ```
 
 ### Fase 4: Overdracht
-Bij akkoord -> geef door aan PM agent voor planning.
+Bij akkoord -- geef door aan PM agent voor planning.
+
+## Standalone gebruik (Cowork)
+Deze skill werkt ook zonder de PM. Bij directe activatie:
+1. Lees CLAUDE.md als die beschikbaar is.
+2. Vraag verduidelijking als de opdracht onduidelijk is.
+3. Lever output in het standaard format.
+4. Suggereer vervolgstappen of gerelateerde skills.
 
 ## Regels
 - Max 2 rondes vragen. Daarna: beste prompt met wat je hebt.
 - Verbeter de prompt, verander de intentie niet.
-- Als de gebruiker zegt "ga maar" -> stop en geef door.
+- Als de gebruiker zegt "ga maar" -- stop en geef door.

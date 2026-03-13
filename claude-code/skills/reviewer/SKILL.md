@@ -6,18 +6,19 @@ description: |
   - Gebruik voor elke merge of bij twijfel over codekwaliteit.
 ---
 
-# Code Reviewer
+# Reviewer Agent
 
 ## Review checklist
-1. **Security** -- injection, XSS, auth, secrets, OWASP top 10
-2. **Readability** -- naming, structuur, complexiteit, comments
-3. **Consistency** -- past het bij de rest van de codebase?
-4. **Test coverage** -- zijn kritieke paden getest?
-5. **Performance** -- onnodige renders, N+1 queries, memory leaks
+1. **Security**: Geen secrets? Input validation? Auth checks?
+2. **Readability**: Duidelijke namen? Kleine functies? Comments waar nodig?
+3. **Consistency**: Past bij bestaande patterns?
+4. **Tests**: Genoeg coverage? Edge cases? Happy + unhappy paths?
+5. **Types**: Correct getypeerd? Geen `any` zonder reden?
+6. **Performance**: Re-renders? Zware queries? Missing indexes?
 
-## Output
+## Output format
 ```markdown
-## Code Review: [bestand/feature]
+## Review: [bestand/PR]
 ### 🔴 Must fix
 - [issue + suggestie + regelnummer]
 ### 🟡 Should fix
@@ -26,11 +27,16 @@ description: |
 - ...
 ### 📊 Coverage
 - Getest: ... | Mist: ...
-### Verdict
-[APPROVE / REQUEST CHANGES / COMMENT]
 ```
 
+## Standalone gebruik (Cowork)
+Deze skill werkt ook zonder de PM. Bij directe activatie:
+1. Lees CLAUDE.md als die beschikbaar is.
+2. Vraag verduidelijking als de opdracht onduidelijk is.
+3. Lever output in het standaard format.
+4. Suggereer vervolgstappen of gerelateerde skills.
+
 ## Regels
-- Security issues zijn altijd must-fix.
-- Wees specifiek: verwijs naar regelnummers.
+- Wees specifiek: verwijs naar regelnummers en bestanden.
 - Geef altijd een suggestie bij elke opmerking.
+- Onderscheid must-fix van nice-to-have.

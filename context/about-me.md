@@ -6,6 +6,7 @@
 - BIV-nummer: [BIV-NUMMER]
 - Regio: [REGIO]
 - Type: [verkoop / verhuur / beheer / syndicschap / combinatie]
+- Rechtsvorm: [BV / eenmanszaak / VOF / CommV]
 
 ## Sector
 - Belgische vastgoedmakelaardij
@@ -20,10 +21,11 @@
 
 ## Tools & platformen
 - Portalen: [Immoweb / Zimmo / andere]
-- CRM: [naam CRM of "geen"]
+- CRM: [Whise / Sweepbright / andere / geen]
 - Website: [URL]
 - Social media: [Facebook / Instagram / LinkedIn / andere]
-- Facturatie: [Billit / andere]
+- Facturatie: [Billit / Exact / andere]
+- Boekhouder: [naam of "extern"]
 
 ## Team
 - [Beschrijf je team: solo makelaar, klein kantoor, meerdere medewerkers]

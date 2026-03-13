@@ -1,18 +1,19 @@
-# Claude Starter Guide
+# Claude Starter Guide voor Vastgoedmakelaars
 
-> Dit document helpt je om Claude optimaal in te richten zodat het jou kent, jouw toon aanhoudt, en weet hoe je werkt. Of je nu Claude Code, Cowork of beide gebruikt.
+> Dit document helpt je om Claude optimaal in te richten als je persoonlijke assistent voor vastgoedmakelaardij. Of je nu Claude Code, Cowork of beide gebruikt.
 
 ---
 
 ## Waarom dit doen?
 
-Claude is krachtig out-of-the-box, maar het kent jou niet. Het weet niet in welke taal je werkt, hoe je communiceert, wat je bedrijf doet, of welke tools je gebruikt.
+Claude is krachtig out-of-the-box, maar het kent jou niet. Het weet niet hoe je kantoor heet, in welke regio je werkt, of welke BIV-regels gelden.
 
 Door een paar configuratiebestanden aan te maken, geef je Claude een geheugen:
 
 - Het antwoordt meteen in jouw taal en toon
-- Het kent je bedrijf, sector en tools
-- Het weet wat je verwacht en wat je irriteert
+- Het kent je kantoor, regio en klanttypen
+- Het weet van BIV-deontologie, GDPR, anti-witwas
+- Het schrijft property beschrijvingen in jouw stijl
 - Het hoeft niet telkens dezelfde vragen te stellen
 
 Dit kost je 30 tot 60 minuten, maar bespaart je uren op lange termijn.
@@ -21,13 +22,11 @@ Dit kost je 30 tot 60 minuten, maar bespaart je uren op lange termijn.
 
 ## Stap 1: Je profiel samenstellen
 
-Er zijn twee manieren om je profiel op te bouwen.
-
 ### Optie A: Exporteer je context uit een bestaande AI (aanbevolen)
 
-Als je al een tijd ChatGPT, Gemini, Claude of een andere AI-assistent gebruikt, zit daar waardevolle context in. Gebruik een van deze twee prompts om die context te exporteren.
+Als je al een tijd ChatGPT, Gemini of Claude gebruikt, zit daar waardevolle context in.
 
-#### Voor AI's met geheugen/opgeslagen context (ChatGPT Memories, Claude Projects)
+#### Voor AI's met geheugen (ChatGPT Memories, Claude Projects)
 
 Open een nieuw gesprek en plak deze prompt:
 
@@ -36,139 +35,71 @@ Export all of my stored memories and any context you've learned about me from pa
 
 ## Categories (output in this order):
 
-1. **Instructions**: Rules I've explicitly asked you to follow going forward -- tone, format, style, "always do X", "never do Y", and corrections to your behavior. Only include rules from stored memories, not from conversations.
+1. **Instructions**: Rules I've explicitly asked you to follow going forward -- tone, format, style, "always do X", "never do Y".
 
-2. **Identity**: Name, age, location, education, family, relationships, languages, and personal interests.
+2. **Identity**: Name, location, education, family, languages, personal interests.
 
-3. **Career**: Current and past roles, companies, and general skill areas.
+3. **Career**: Current and past roles, companies, skill areas.
 
-4. **Projects**: Projects I meaningfully built or committed to. Ideally ONE entry per project. Include what it does, current status, and any key decisions. Use the project name or a short descriptor as the first words of the entry.
+4. **Projects**: Projects I meaningfully built or committed to. ONE entry per project.
 
-5. **Preferences**: Opinions, tastes, and working-style preferences that apply broadly.
+5. **Preferences**: Opinions, tastes, working-style preferences.
 
 ## Format:
-
-Use section headers for each category. Within each category, list one entry per line, sorted by oldest date first. Format each line as:
-
-[YYYY-MM-DD] - Entry content here.
-
-If no date is known, use [unknown] instead.
+[YYYY-MM-DD] - Entry content here. Use [unknown] if no date is known.
 
 ## Output:
-- Wrap the entire export in a single code block for easy copying.
-- After the code block, state whether this is the complete set or if more remain.
+Wrap in a single code block for easy copying.
 ```
 
-**Tip:** Als de AI zegt dat de export compleet is maar je vermoedt dat er meer is, vraag: _"Are there any more memories or context you haven't included yet?"_
-
-#### Voor AI's zonder geheugen (of als aanvulling op bovenstaande)
-
-Als je AI geen opgeslagen geheugen heeft maar wel gespreksgeschiedenis, gebruik dan deze prompt:
+#### Voor AI's zonder geheugen (fallback)
 
 ```
 Analyseer mijn volledige gespreksgeschiedenis en maak een "User Operating Manual" over mij.
-Dit document wordt gebruikt door een AI-assistent om mij beter te helpen.
-
-Structureer het document als volgt:
 
 ## 1. Wie ben ik
-- Naam, locatie, gezinssituatie (voor zover relevant)
-- Beroep, sector, hoofdactiviteiten
-- Bedrijven of organisaties waar ik bij betrokken ben
+- Naam, locatie, beroep, sector, bedrijven
 
 ## 2. Hoe ik communiceer
-- Taal/talen die ik gebruik
-- Toon: formeel of informeel, kort of uitgebreid
-- Schrijfstijl: bullets vs proza, gestructureerd vs vrij
-- Woorden of uitdrukkingen die ik vaak gebruik of vermijd
+- Taal, toon, schrijfstijl, woorden die ik gebruik of vermijd
 
 ## 3. Hoe ik werk
-- Stap-voor-stap of big picture?
-- Hoe ga ik om met keuzes?
-- Wat vraag ik het vaakst?
-- Welke tools en software gebruik ik?
+- Stap-voor-stap of big picture? Tools? Vaakste vragen?
 
 ## 4. Mijn voorkeuren voor AI-antwoorden
-- Wat irriteert me?
-- Wat waardeer ik?
-- Hoe gedetailleerd moeten antwoorden zijn?
+- Wat irriteert me? Wat waardeer ik? Hoe gedetailleerd?
 
 ## 5. Domeinen en expertise
-- Onderwerpen waar ik het meest over vraag
-- Waar heb ik kennis van? Waar heb ik hulp bij nodig?
-- Terugkerende projecten of thema's
+- Onderwerpen, kennis, hulp nodig bij, terugkerende thema's
 
-Wees zo specifiek mogelijk. Gebruik concrete voorbeelden.
+Wees zo specifiek mogelijk.
 ```
 
-**Tip:** Als het antwoord te oppervlakkig is, vraag: _"Ga dieper in op sectie [nummer]. Gebruik meer concrete voorbeelden."_
+### Optie B: Gebruik de interactieve setup
 
-### Optie B: Handmatig invullen
+Kopieer de prompt uit `setup-prompt.md` en plak die in een nieuw Cowork gesprek. Claude stelt je vastgoed-specifieke vragen en maakt alle bestanden voor je aan.
 
-Geen AI-historiek? Ga direct naar Stap 2.
+### Optie C: Handmatig invullen
 
----
-
-## Stap 2: Aanvullende vragen
-
-Beantwoord deze vragen zo concreet mogelijk. Sla over wat al gedekt is door Stap 1.
-
-### A. Over jou
-
-| #   | Vraag                                                 |
-| --- | ----------------------------------------------------- |
-| A1  | Wat is je naam? Hoe wil je aangesproken worden?       |
-| A2  | Waar woon je? (regio/land)                            |
-| A3  | Wat is je beroep of hoofdactiviteit?                  |
-| A4  | Bij welke bedrijven of organisaties ben je betrokken? |
-| A5  | In welke sector(en) werk je? Wat is je expertise?     |
-| A6  | Welke software en tools gebruik je dagelijks?         |
-
-### B. Taal en toon
-
-| #   | Vraag                                                     |
-| --- | --------------------------------------------------------- |
-| B1  | In welke taal moet Claude antwoorden?                     |
-| B2  | Hoe formeel moet Claude zijn?                             |
-| B3  | Hoe lang mogen antwoorden zijn?                           |
-| B4  | Wat irriteert je in AI-antwoorden?                        |
-| B5  | Bij vage vragen: eerst verduidelijken of gewoon proberen? |
-
-### C. Werkwijze
-
-| #   | Vraag                                                         |
-| --- | ------------------------------------------------------------- |
-| C1  | Stap-voor-stap of meteen het eindresultaat?                   |
-| C2  | Bij meerdere opties: allemaal tonen of 1 aanbeveling?         |
-| C3  | Waarvoor ga je Claude het meest gebruiken?                    |
-| C4  | Zijn er taken waarvoor Claude nooit zelfstandig mag handelen? |
-| C5  | Bij fouten: uitleggen wat er misging, of gewoon de fix?       |
-
-### D. Domeincontext
-
-| #   | Vraag                                                         |
-| --- | ------------------------------------------------------------- |
-| D1  | Over welke onderwerpen ga je het vaakst vragen stellen?       |
-| D2  | Zijn er regels of wetten die relevant zijn voor je werk?      |
-| D3  | Gebruik je vaktermen die Claude moet kennen?                  |
-| D4  | Zijn er terugkerende projecten of thema's?                    |
-| D5  | Is er iets wat Claude absoluut niet mag doen in jouw context? |
+Ga direct naar Stap 2.
 
 ---
 
-## Stap 3: Bestanden aanmaken
+## Stap 2: Bestanden aanmaken
 
-Met je antwoorden maak je drie context-bestanden aan. Gebruik de templates uit de `context/` map en de voorbeelden uit `examples/`.
+Met je antwoorden maak je drie context-bestanden aan. Gebruik de templates uit `context/` en de voorbeelden uit `examples/`.
 
-| Bestand       | Wat het bevat                                       |
-| ------------- | --------------------------------------------------- |
-| `about-me.md` | Wie je bent, je bedrijven, expertise, tools         |
-| `my-voice.md` | Taal, toon, schrijfstijl, communicatievoorkeuren    |
-| `my-rules.md` | Werkregels, do's & don'ts, domeinspecifieke context |
+| Bestand       | Wat het bevat                                         |
+| ------------- | ----------------------------------------------------- |
+| `about-me.md` | Kantoor, BIV-nummer, regio, type panden, tools, team  |
+| `my-voice.md` | Taal, toon, schrijfstijl, communicatievoorkeuren      |
+| `my-rules.md` | BIV-deontologie, GDPR, werkregels, do's & don'ts      |
 
-### Voor Claude Code CLI gebruikers
+---
 
-Draai het install script om alles automatisch te installeren:
+## Stap 3: Installeren
+
+### Claude Code CLI (developers)
 
 ```bash
 cd claude-starter-pack
@@ -176,92 +107,83 @@ chmod +x install.sh
 ./install.sh
 ```
 
-Dit installeert:
+Het script installeert:
+- `CLAUDE.md` met agent-hierarchie, permission profiles, en cowork modus
+- 3 permission profiles (safe/dev/elevated) met switch script
+- 24 gespecialiseerde agents (inclusief legal-makelaar, marketing, cfo, hr)
+- 20 auto-trigger skills met standalone Cowork instructies
+- 11 slash commands (inclusief /start met fast/strict modus en /ask)
 
-- `~/.claude/CLAUDE.md` -- globale instructies
-- `~/.claude/settings.json` -- permissions en hooks
-- `~/.claude/commands/` -- 10 slash commands
-- `~/.claude/agents/` -- 18 gespecialiseerde agents
-- `~/.claude/skills/` -- 19 auto-trigger skills
+### Cowork (niet-technisch)
 
-Pas daarna `~/.claude/CLAUDE.md` aan naar jouw voorkeuren.
-
-### Voor Cowork gebruikers
-
-Volg de instructies in `cowork/setup-guide.md`.
+Volg de instructies in `cowork/setup-guide.md` of gebruik `setup-prompt.md`.
 
 ---
 
-## Stap 4: Testen en bijsturen
+## Stap 4: Testen
 
-1. Start een nieuw gesprek in Claude
-2. Stel een typische vraag
-3. Check: klopt de taal? De toon? De lengte?
-4. Pas je bestanden aan waar nodig
+Test met deze 3 vragen:
 
-Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
+1. **Property beschrijving**: "Schrijf een beschrijving voor een appartement met 2 slaapkamers in Gent, 85m2, gerenoveerd in 2023, met terras"
+2. **Follow-up email**: "Schrijf een follow-up email naar een eigenaar die vorige week interesse toonde om te verkopen maar nog twijfelt"
+3. **Juridische vraag**: "Welke informatieplichten heb ik bij de verkoop van een woning in Vlaanderen?"
+
+Check: klopt de taal? De toon? Wordt BIV-context meegenomen? Staat er een disclaimer bij juridisch advies?
 
 ---
 
 ## Wat zit er in dit starter pack?
 
-### Context bestanden (voor iedereen)
+### Agents (24 stuks)
 
-- `context/about-me.md` -- template
-- `context/my-voice.md` -- template
-- `context/my-rules.md` -- template
-- `examples/` -- ingevulde voorbeelden
+#### Workflow
+| Agent | Doel |
+|-------|------|
+| `prompt-analyst` | Analyseert prompts, maakt handoff-contract voor PM |
+| `pm` | Orchestrator: fast/strict modus, plant werk, stuurt agents aan |
 
-### Claude Code CLI (voor developers)
+#### Development
+| Agent | Doel |
+|-------|------|
+| `senior-dev` | Codebase analyse, architectuur, product/UX |
+| `reviewer` | Code review + quality gate in PM-flow |
+| `qa` | Testplannen, regressies, edge cases |
+| `tester` | Tests schrijven (Vitest, pytest, Playwright) |
+| `data-engineer` | Schema's, migraties, Supabase RLS |
+| `devops` | CI/CD, Docker, deployment |
+| `security` | OWASP, dependency scanning, GDPR |
+| `docs-writer` | API docs, README's, CLAUDE.md's |
+| `researcher` | Deep research, technologie-keuzes |
+| `e2e-tester` | Playwright CLI browser testing |
+| `mobile-dev` | iOS/Swift/SwiftUI, React Native, App Store |
+| `frontend-architect` | Framework keuze, design system, Core Web Vitals |
+| `api-designer` | REST/GraphQL, auth patterns, OpenAPI |
 
-- `claude-code/CLAUDE.md` -- globale instructies template
-- `claude-code/settings.json` -- permissions, hooks, safety rules
-- `claude-code/agents/` -- 18 gespecialiseerde agents
-- `claude-code/commands/` -- 10 slash commands
-- `claude-code/skills/` -- 19 auto-trigger skills
-- `install.sh` -- automatische installer
+#### Vastgoed & Business
+| Agent | Doel |
+|-------|------|
+| `product-coach` | Product visie verhelderen |
+| `copywriter` | Property beschrijvingen, website, email, social |
+| `marketing` | SEO, GEO, Immoweb/Zimmo, campagnes |
+| `sales-coach` | Mandaat binnenhalen, scripts, objection handling |
+| `legal-makelaar` | BIV, huurrecht, verkooprecht, GDPR, anti-witwas |
+| `cfo` | Belgische fiscaliteit, VenB, BTW, VVPRbis |
+| `hr` | Belgisch arbeidsrecht, onboarding, verlof |
+| `geschillen-communicatie` | Dossierbeheer, brieven verzekeraars/advocaten |
+| `design-researcher` | UX/UI, visueel design, Immoweb benchmarks |
 
-### Cowork (voor niet-technische gebruikers)
+### Slash commands (11 stuks)
 
-- `cowork/setup-guide.md` -- stap-voor-stap setup
-
----
-
-## Beschikbare agents
-
-| Agent               | Doel                                                 |
-| ------------------- | ---------------------------------------------------- |
-| `prompt-analyst`    | Analyseert en verbetert prompts voordat werk begint  |
-| `pm`                | Orchestrator: plant werk, stuurt agents aan          |
-| `senior-dev`        | Codebase analyse, architectuur, product/UX inzichten |
-| `reviewer`          | Code review: security, readability, consistency      |
-| `qa`                | Testplannen, regressies, edge cases                  |
-| `tester`            | Tests schrijven en draaien (unit, integration, e2e)  |
-| `data-engineer`     | Schema's, migraties, queries, performance            |
-| `product-coach`     | Product visie verhelderen via gerichte vragen         |
-| `design-researcher` | UX/UI onderzoek, visueel design, patterns            |
-| `copywriter`        | Teksten voor diverse kanalen                         |
-| `marketing`         | Strategie, SEO, GEO, social media, email             |
-| `sales-coach`       | Verkoopstrategie, scripts, objection handling        |
-| `legal`             | Juridische vragen, compliance, GDPR                  |
-| `cfo`               | Financiele analyse, budgettering, fiscaal advies     |
-| `devops`            | CI/CD, Docker, deployment, monitoring                |
-| `security`          | Security audits, OWASP, dependency scanning          |
-| `docs-writer`       | API docs, README's, user guides                      |
-| `researcher`        | Deep research, technologie-keuzes, best practices    |
-| `e2e-tester`        | Playwright CLI browser testing, visuele regressie    |
-
-## Beschikbare slash commands
-
-| Command         | Doel                                                         |
-| --------------- | ------------------------------------------------------------ |
-| `/start`        | Nieuwe taak starten (prompt analyse + planning + uitvoering) |
-| `/plan`         | Implementatieplan maken                                      |
-| `/review`       | Code review uitvoeren                                        |
-| `/commit`       | Conventional commit aanmaken                                 |
-| `/debug`        | Systematisch debuggen                                        |
-| `/refactor`     | Code opschonen                                               |
-| `/ship`         | Pre-ship checklist (lint, tests, build)                      |
-| `/design`       | UI/UX design analyseren en verbeteren                        |
-| `/research`     | Research uitvoeren over een onderwerp                        |
-| `/init-project` | CLAUDE.md aanmaken voor een project                          |
+| Command | Doel |
+|---------|------|
+| `/start` | Nieuwe taak (fast/strict modus) |
+| `/plan` | Implementatieplan |
+| `/review` | Code review |
+| `/commit` | Conventional commit |
+| `/debug` | Systematisch debuggen |
+| `/refactor` | Code opschonen |
+| `/ship` | Pre-ship checklist |
+| `/design` | UI/UX analyse |
+| `/research` | Research uitvoeren |
+| `/init-project` | Project CLAUDE.md aanmaken |
+| `/ask` | Directe vraag (geen planning) |
