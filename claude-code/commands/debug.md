@@ -4,7 +4,7 @@ Aanpak:
 
 1. **Reproduceer** -- bevestig dat het probleem daadwerkelijk optreedt
 2. **Isoleer** -- minimaliseer het tot de kleinst mogelijke reproductie
-3. **Hypotheses** -- formuleer 2-3 mogelijke oorzaken, meest waarschijnlijk eerst
+3. **Hypotheses** -- formuleer 2-3 mogelijke oorzaken, meest waarschijnlijk eerst. Beschrijf per hypothese hoe je die zou verifieren (welke check, log, of test)
 4. **Verifieer** -- test elke hypothese een voor een (log, breakpoint, test case)
 5. **Fix** -- los de oorzaak op, niet het symptoom
 6. **Verifieer fix** -- bevestig dat het probleem weg is en niets anders gebroken is
@@ -19,6 +19,7 @@ Hulpmiddelen:
 
 Output:
 
+- Toon de hypotheses met per hypothese de verificatiestap
 - Beschrijf de root cause in een zin
 - Toon de fix met diff
 - Vermeld of er tests nodig zijn om regressie te voorkomen

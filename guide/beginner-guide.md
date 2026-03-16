@@ -142,8 +142,8 @@ Dit installeert:
 
 - `~/.claude/CLAUDE.md` -- globale instructies
 - `~/.claude/settings.json` -- permissions en hooks
-- `~/.claude/commands/` -- 8 slash commands
-- `~/.claude/agents/` -- 17 gespecialiseerde agents
+- `~/.claude/commands/` -- 11 slash commands
+- `~/.claude/agents/` -- 23 gespecialiseerde agents
 
 Pas daarna `~/.claude/CLAUDE.md` aan naar jouw voorkeuren.
 
@@ -177,8 +177,8 @@ Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
 
 - `claude-code/CLAUDE.md` -- globale instructies template
 - `claude-code/settings.json` -- permissions, hooks, safety rules
-- `claude-code/agents/` -- 17 gespecialiseerde agents
-- `claude-code/commands/` -- 8 slash commands
+- `claude-code/agents/` -- 23 gespecialiseerde agents
+- `claude-code/commands/` -- 11 slash commands
 - `install.sh` -- automatische installer
 
 ### Cowork (voor niet-technische gebruikers)
@@ -189,35 +189,44 @@ Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
 
 ## Beschikbare agents
 
-| Agent               | Doel                                                 |
-| ------------------- | ---------------------------------------------------- |
-| `prompt-analyst`    | Analyseert en verbetert prompts voordat werk begint  |
-| `pm`                | Orchestrator: plant werk, stuurt agents aan          |
-| `senior-dev`        | Codebase analyse, architectuur, product/UX inzichten |
-| `reviewer`          | Code review: security, readability, consistency      |
-| `qa`                | Testplannen, regressies, edge cases                  |
-| `tester`            | Tests schrijven en draaien (unit, integration, e2e)  |
-| `data-engineer`     | Schema's, migraties, queries, performance            |
-| `product-coach`     | Product visie verhelderen via gerichte vragen        |
-| `design-researcher` | UX/UI onderzoek, visueel design, patterns            |
-| `copywriter`        | Teksten voor diverse kanalen                         |
-| `marketing`         | Strategie, SEO, GEO, social media, email             |
-| `sales-coach`       | Verkoopstrategie, scripts, objection handling        |
-| `legal`             | Juridische vragen, compliance, GDPR                  |
-| `devops`            | CI/CD, Docker, deployment, monitoring                |
-| `security`          | Security audits, OWASP, dependency scanning          |
-| `docs-writer`       | API docs, README's, user guides                      |
-| `researcher`        | Deep research, technologie-keuzes, best practices    |
+| Agent                | Doel                                                       |
+| -------------------- | ---------------------------------------------------------- |
+| `prompt-analyst`     | Analyseert en verbetert prompts voordat werk begint        |
+| `pm`                 | Orchestrator: plant werk, stuurt agents aan                |
+| `senior-dev`         | Codebase analyse, architectuur, product/UX inzichten       |
+| `reviewer`           | Code review: security, readability, consistency            |
+| `qa`                 | Testplannen, regressies, edge cases                        |
+| `tester`             | Tests schrijven en draaien (unit, integration, e2e)        |
+| `data-engineer`      | Schema's, migraties, queries, performance                  |
+| `devops`             | CI/CD, Docker, deployment, monitoring                      |
+| `security`           | Security audits, OWASP, dependency scanning                |
+| `docs-writer`        | API docs, README's, user guides                            |
+| `researcher`         | Deep research, technologie-keuzes, best practices          |
+| `e2e-tester`         | Playwright browser testing, live flows, visuele regressie  |
+| `frontend-architect` | Framework keuze, design system, performance                |
+| `mobile-dev`         | iOS/Swift/SwiftUI, React Native, App Store                 |
+| `api-designer`       | REST/GraphQL design, auth patterns, OpenAPI docs           |
+| `product-coach`      | Product visie verhelderen via gerichte vragen              |
+| `design-researcher`  | UX/UI onderzoek, visueel design, patterns                  |
+| `copywriter`         | Teksten voor diverse kanalen                               |
+| `marketing`          | Strategie, SEO, GEO, social media, email                   |
+| `sales-coach`        | Verkoopstrategie, scripts, objection handling              |
+| `legal`              | Juridische vragen, compliance, GDPR                        |
+| `cfo`                | Financiele analyse, fiscale planning, structuuradvies      |
+| `hr`                 | Arbeidsrecht, onboarding, verlofregeling, freelance vs FTE |
 
 ## Beschikbare slash commands
 
-| Command         | Doel                                                         |
-| --------------- | ------------------------------------------------------------ |
-| `/start`        | Nieuwe taak starten (prompt analyse + planning + uitvoering) |
-| `/plan`         | Implementatieplan maken                                      |
-| `/review`       | Code review uitvoeren                                        |
-| `/commit`       | Conventional commit aanmaken                                 |
-| `/debug`        | Systematisch debuggen                                        |
-| `/refactor`     | Code opschonen                                               |
-| `/ship`         | Pre-ship checklist (lint, tests, build)                      |
-| `/init-project` | CLAUDE.md aanmaken voor een project                          |
+| Command         | Doel                                                     |
+| --------------- | -------------------------------------------------------- |
+| `/start`        | Nieuwe taak starten (prompt analyse + plan + uitvoering) |
+| `/ask`          | Directe vraag beantwoorden zonder planning overhead      |
+| `/plan`         | Implementatieplan maken                                  |
+| `/review`       | Code review uitvoeren                                    |
+| `/commit`       | Conventional commit met secrets check en lint            |
+| `/debug`        | Systematisch debuggen met hypotheses                     |
+| `/refactor`     | Code analyseren en opschonen met cross-file checks       |
+| `/ship`         | Pre-ship checklist met fail-fast pipeline                |
+| `/design`       | UI/UX design analyseren en verbeteren                    |
+| `/research`     | Research uitvoeren over een onderwerp                    |
+| `/init-project` | Project CLAUDE.md aanmaken of updaten                    |

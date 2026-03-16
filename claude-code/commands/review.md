@@ -7,7 +7,8 @@ Controleer in deze volgorde:
 3. **Stijl** -- consistent met de rest van de codebase (patronen, naming)
 4. **Performance** -- onnodige re-renders, N+1 queries, zware berekeningen in render
 5. **Veiligheid** -- user input gesaniteerd, geen secrets hardcoded, auth checks aanwezig
-6. **Tests** -- zijn er tests nodig? zo ja, welke?
+6. **i18n** -- als project meerdere talen gebruikt: alle nieuwe strings in de juiste content bestanden?
+7. **Tests** -- zijn er tests nodig? zo ja, welke?
 
 Output formaat:
 
