@@ -142,7 +142,7 @@ Dit installeert:
 
 - `~/.claude/CLAUDE.md` -- globale instructies
 - `~/.claude/settings.json` -- permissions en hooks
-- `~/.claude/commands/` -- 11 slash commands
+- `~/.claude/commands/` -- 25 slash commands
 - `~/.claude/agents/` -- 23 gespecialiseerde agents
 
 Pas daarna `~/.claude/CLAUDE.md` aan naar jouw voorkeuren.
@@ -178,7 +178,7 @@ Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
 - `claude-code/CLAUDE.md` -- globale instructies template
 - `claude-code/settings.json` -- permissions, hooks, safety rules
 - `claude-code/agents/` -- 23 gespecialiseerde agents
-- `claude-code/commands/` -- 11 slash commands
+- `claude-code/commands/` -- 25 slash commands
 - `install.sh` -- automatische installer
 
 ### Cowork (voor niet-technische gebruikers)
@@ -217,6 +217,8 @@ Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
 
 ## Beschikbare slash commands
 
+### Core workflow
+
 | Command         | Doel                                                     |
 | --------------- | -------------------------------------------------------- |
 | `/start`        | Nieuwe taak starten (prompt analyse + plan + uitvoering) |
@@ -230,3 +232,43 @@ Dit is een iteratief proces. Je profiel wordt beter naarmate je het bijstuurt.
 | `/design`       | UI/UX design analyseren en verbeteren                    |
 | `/research`     | Research uitvoeren over een onderwerp                    |
 | `/init-project` | Project CLAUDE.md aanmaken of updaten                    |
+
+### Idea to implementation
+
+| Command                | Doel                                                                 |
+| ---------------------- | -------------------------------------------------------------------- |
+| `/grill-me`            | Intensief doorvragen over een idee tot gedeeld begrip                |
+| `/write-a-prd`         | PRD schrijven met user stories, architectuur, acceptance criteria    |
+| `/prd-to-issues`       | PRD omzetten naar verticale GitHub issues met HITL/AFK classificatie |
+| `/prd-to-plan`         | PRD omzetten naar gefaseerd lokaal plan met verticale slices         |
+| `/tdd`                 | Test-Driven Development: Red-Green-Refactor cycli                    |
+| `/design-an-interface` | Meerdere radicale interface-designs vergelijken ("Design It Twice")  |
+
+### Maintenance & improvement
+
+| Command                | Doel                                                              |
+| ---------------------- | ----------------------------------------------------------------- |
+| `/refactor-plan`       | Gedetailleerd refactorplan met tiny commits en GitHub issue       |
+| `/triage-issue`        | Bug onderzoeken, root cause vinden, GitHub issue met TDD fix plan |
+| `/ubiquitous-language` | DDD glossary extraheren uit gesprek                               |
+| `/improve-codebase`    | Architectuur review op agent-vriendelijkheid                      |
+| `/write-a-skill`       | Nieuwe skill aanmaken met juiste structuur en optioneel eval      |
+
+### Advanced: Self-Improvement
+
+| Command            | Doel                                                                       |
+| ------------------ | -------------------------------------------------------------------------- |
+| `/improve-skill`   | Autonome improvement loop: eval draaien, score meten, iteratief verbeteren |
+| `/run-eval`        | Eenmalige evaluatie van een skill, alleen score rapporteren                |
+| `/activation-eval` | Test of prompts naar de juiste skill gerouteerd worden                     |
+
+---
+
+## Workflow Guide
+
+Niet zeker welke command je nodig hebt? Zie `WORKFLOW-GUIDE.md` in de project root voor:
+
+- **5 lagen**: Idee -> Plan -> Implementatie -> Quality -> Meta
+- **Overlap verduidelijking**: wanneer /refactor vs /refactor-plan, /debug vs /triage-issue, etc.
+- **3 kernflows**: Feature development, Idee tot productie, Bug naar fix
+- **Anti-patterns**: veelgemaakte fouten en wat je in plaats daarvan moet doen

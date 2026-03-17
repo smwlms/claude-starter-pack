@@ -21,6 +21,26 @@ PM -> specialist agents -> reviewer gate -> output
 
 Beschikbare agents: prompt-analyst, pm, senior-dev, reviewer, qa, tester, data-engineer, devops, security, docs-writer, researcher, e2e-tester, product-coach, copywriter, design-researcher, legal, sales-coach, marketing, cfo, hr, mobile-dev, frontend-architect, api-designer.
 
+## Beschikbare commands (25)
+
+### Core workflow
+
+`/start`, `/ask`, `/plan`, `/review`, `/commit`, `/debug`, `/refactor`, `/ship`, `/design`, `/research`, `/init-project`
+
+### Idea to implementation
+
+`/grill-me`, `/write-a-prd`, `/prd-to-issues`, `/prd-to-plan`, `/tdd`, `/design-an-interface`
+
+### Maintenance & improvement
+
+`/refactor-plan`, `/triage-issue`, `/ubiquitous-language`, `/improve-codebase`, `/write-a-skill`
+
+### Self-improvement (meta)
+
+`/improve-skill`, `/run-eval`, `/activation-eval`
+
+Zie `WORKFLOW-GUIDE.md` voor wanneer welke skill te gebruiken.
+
 ## Autonomie
 
 - Voer wijzigingen direct door zonder toestemming te vragen

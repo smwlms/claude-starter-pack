@@ -9,9 +9,10 @@ Een kant-en-klaar configuratiepakket voor Claude dat bevat:
 - **Persoonlijke context** -- templates om Claude te vertellen wie je bent, hoe je werkt, en wat je verwacht
 - **23 gespecialiseerde agents** -- van code review tot marketing, van security tot mobile development
 - **19 auto-trigger skills** -- dezelfde expertise als skills die automatisch activeren op basis van context
-- **11 slash commands** -- workflows voor plannen, reviewen, committen, debuggen, design en meer
+- **25 slash commands** -- workflows voor plannen, reviewen, committen, debuggen, design, TDD, PRD's en meer
 - **Veilige defaults** -- permissions, hooks en safety rules die destructieve acties blokkeren
 - **Beginner guide** -- stap-voor-stap uitleg om alles in te richten
+- **Workflow guide** -- naslagwerk dat uitlegt wanneer welke skill te gebruiken
 
 ## Wie is dit voor?
 
@@ -54,6 +55,7 @@ Start met `guide/beginner-guide.md` -- die leidt je door het hele proces.
 claude-starter-pack/
 |
 |-- README.md                    # Dit bestand
+|-- WORKFLOW-GUIDE.md            # Wanneer welke skill gebruiken
 |-- install.sh                   # Automatische installer (CLI)
 |-- setup-prompt.md              # Plak in Cowork, Claude doet de rest
 |
@@ -74,7 +76,7 @@ claude-starter-pack/
 |   |-- CLAUDE.md               # Globale instructies
 |   |-- settings.json           # Permissions, hooks, safety
 |   |-- agents/                 # 23 gespecialiseerde agents
-|   |-- commands/               # 11 slash commands
+|   |-- commands/               # 25 slash commands
 |   +-- skills/                 # 19 auto-trigger skills
 |
 +-- cowork/                      # Cowork-specifiek
@@ -155,6 +157,8 @@ Skills worden automatisch geactiveerd wanneer Claude detecteert dat je vraag bij
 
 ## Slash Commands
 
+### Core workflow
+
 | Command         | Doel                                                     |
 | --------------- | -------------------------------------------------------- |
 | `/start`        | Nieuwe taak starten (prompt analyse + plan + uitvoering) |
@@ -168,6 +172,37 @@ Skills worden automatisch geactiveerd wanneer Claude detecteert dat je vraag bij
 | `/design`       | UI/UX design analyseren en verbeteren                    |
 | `/research`     | Research uitvoeren over een onderwerp                    |
 | `/init-project` | Project CLAUDE.md aanmaken of updaten                    |
+
+### Idea to implementation
+
+| Command                | Doel                                                                 |
+| ---------------------- | -------------------------------------------------------------------- |
+| `/grill-me`            | Intensief doorvragen over een idee tot gedeeld begrip                |
+| `/write-a-prd`         | PRD schrijven met user stories, architectuur, acceptance criteria    |
+| `/prd-to-issues`       | PRD omzetten naar verticale GitHub issues met HITL/AFK classificatie |
+| `/prd-to-plan`         | PRD omzetten naar gefaseerd lokaal plan met verticale slices         |
+| `/tdd`                 | Test-Driven Development: Red-Green-Refactor cycli                    |
+| `/design-an-interface` | Meerdere radicale interface-designs vergelijken ("Design It Twice")  |
+
+### Maintenance & improvement
+
+| Command                | Doel                                                              |
+| ---------------------- | ----------------------------------------------------------------- |
+| `/refactor-plan`       | Gedetailleerd refactorplan met tiny commits en GitHub issue       |
+| `/triage-issue`        | Bug onderzoeken, root cause vinden, GitHub issue met TDD fix plan |
+| `/ubiquitous-language` | DDD glossary extraheren uit gesprek                               |
+| `/improve-codebase`    | Architectuur review op agent-vriendelijkheid                      |
+| `/write-a-skill`       | Nieuwe skill aanmaken met juiste structuur en optioneel eval      |
+
+### Advanced: Self-Improvement
+
+| Command            | Doel                                                                       |
+| ------------------ | -------------------------------------------------------------------------- |
+| `/improve-skill`   | Autonome improvement loop: eval draaien, score meten, iteratief verbeteren |
+| `/run-eval`        | Eenmalige evaluatie van een skill, alleen score rapporteren                |
+| `/activation-eval` | Test of prompts naar de juiste skill gerouteerd worden                     |
+
+> Zie `WORKFLOW-GUIDE.md` voor een compleet overzicht van wanneer welke skill te gebruiken, inclusief overlap-verduidelijking en de drie kernflows.
 
 ## Settings & Safety
 
